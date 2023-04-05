@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 78707
+  controlID: 6216
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 78540
+  controlID: 6121
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 78556
+  controlID: 6137
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -730,9 +730,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 30.051725, y: 10.386044, z: -3.7939608}
+    m_Target: {x: 21.482058, y: 5.5067253, z: -6.7012606}
     speed: 2
-    m_Value: {x: 30.051725, y: 10.386044, z: -3.7939608}
+    m_Value: {x: 21.482058, y: 5.5067253, z: -6.7012606}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -778,13 +778,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.16083272, y: -0.7172802, z: 0.17621233, w: 0.6546723}
+    m_Target: {x: -0.28898507, y: -0.6688906, z: 0.31891, w: -0.6061158}
     speed: 2
-    m_Value: {x: -0.16083272, y: 0.71728027, z: -0.17621233, w: -0.6546724}
+    m_Value: {x: 0.28898507, y: 0.6688906, z: -0.31891003, w: 0.6061158}
   m_Size:
-    m_Target: 0.042063594
+    m_Target: 2.7318833
     speed: 2
-    m_Value: 0.042063594
+    m_Value: 2.7318833
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -924,23 +924,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Used assets/Environment Shaders
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Used assets/Environment Shaders
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nicol\Documents\GitHub\ChemGame\ChemicalGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 11}
-    m_SelectedIDs: 34ec0000
-    m_LastClickedID: 60468
-    m_ExpandedIDs: 00000000dc610000de610000e0610000e2610000e4610000e6610000e8610000ea610000ec610000ee610000f0610000f26100002a620000b0590100541a0b0068c50b0000ca9a3b
+    scrollPos: {x: 0, y: 27}
+    m_SelectedIDs: 7a110000
+    m_LastClickedID: 4474
+    m_ExpandedIDs: 00000000661100007a11000096110000ee110000261200003e120000421200004e1200007a1200001a1400006e1400009a1400005ab500005cb500005eb5000060b5000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -968,7 +968,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000dc610000de610000e0610000e2610000e4610000e6610000e8610000ea610000ec610000ee610000f0610000f26100002a620000b0590100541a0b0068c50b0000ca9a3b
+    m_ExpandedIDs: 00000000661100007a11000096110000ee110000261200003e120000421200004e1200007a1200001a1400006e1400009a1400005ab500005cb500005eb5000060b5000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1172,9 +1172,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 3086f8ff8286f8ff2a91f8ffca70f9ffc6eff9ffb8f0f9ffe4faf9ff94d6fbffeed6fbff2ee4fbfffa0efcff740ffcff029ffcfff2dafeff02dbfeff36dcfeffc6f4feff78f6feff7af6fefff800ffff9a02ffff9c02ffff0607ffffe20cffffc20effffb23affffa2f8ffff00fbffff2c5b00006e5b0000885b00006a5c0000b25c0000945e0000ba5a07001a5b0700205b0700385c0700a85c0700145d0700ba5d07000a5e0700a25e0700d45e0700ce5f0700b4600700c26007003e6107003a620700726207008e6207005a630700446407008c640700a064070096660700d06607001e670700c8670700ce67070036680700c2680700e268070062690700ba690700fe690700866a0700306b0700746c0700ba6c07007c6d0700b06d0700ba6d07000c6e0700586e0700806e0700986e0700e86f07003e700700b670070098710700da71070080720700d4720700ea72070040730700ce74070048750700da750700ea750700a2760700c8760700d6760700427707002a7807003c79070096790700427a0700dc7a0700ec7a07004c7b07006c7b0700227c0700ba7c0700247d07009e7e07000a7f0700a87f0700ae7f0700b47f0700168007002e8107000a820700ca820700e48207003883070082830700208407002e84070016850700008707003e87070094870700268807005a880700d6880700
+      m_SelectedIDs: 0abe0000
+      m_LastClickedID: 48650
+      m_ExpandedIDs: 3a28ffff9429ffff2e2bffff3eb90000a4b9000024bc0000f2bc0000b4c200008ac3000030cc000036cd0000a2ce00002cd100009ad900007cdb0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
