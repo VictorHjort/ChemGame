@@ -1,12 +1,14 @@
-
+using UnityEngine.AI;
 using UnityEngine;
 
 public class OnHover : MonoBehaviour
 {
 
-    Outline outline;
+    public Outline outline;
+    public Camera cam;
+    public bool isOver, isPicked;
 
-    private void Start()
+    void Start()
     {
         outline = GetComponent<Outline>();
         outline.enabled = false;
@@ -18,10 +20,15 @@ public class OnHover : MonoBehaviour
     void OnMouseOver()
     {
         outline.enabled = true;
+        isOver = true;
     }
 
     void OnMouseExit()
     {
-        outline.enabled = false;
+        if (!isPicked)
+        {
+            outline.enabled = false;
+        }
+        isOver = false;
     }
 }
