@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 6216
+  controlID: 17272
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 6121
+  controlID: 17195
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 6137
+  controlID: 17204
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -543,9 +543,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: -244, y: 10}
+      snapOffset: {x: -244, y: -506}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 3
       id: Scene View/Camera
       index: 1
       layout: 4
@@ -730,9 +730,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 21.482058, y: 5.5067253, z: -6.7012606}
+    m_Target: {x: 11.637283, y: 9.230601, z: -12.142525}
     speed: 2
-    m_Value: {x: 21.482058, y: 5.5067253, z: -6.7012606}
+    m_Value: {x: 11.637283, y: 9.230601, z: -12.142525}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -778,13 +778,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.28898507, y: -0.6688906, z: 0.31891, w: -0.6061158}
+    m_Target: {x: -0.3980428, y: 0.40555283, z: -0.20239684, w: -0.79757947}
     speed: 2
-    m_Value: {x: 0.28898507, y: 0.6688906, z: -0.31891003, w: 0.6061158}
+    m_Value: {x: -0.39804277, y: 0.40555283, z: -0.20239684, w: -0.79757947}
   m_Size:
-    m_Target: 2.7318833
+    m_Target: 5.3718596
     speed: 2
-    m_Value: 2.7318833
+    m_Value: 5.3718596
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -924,23 +924,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Used assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nicol\Documents\GitHub\ChemGame\ChemicalGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 27}
-    m_SelectedIDs: 7a110000
-    m_LastClickedID: 4474
-    m_ExpandedIDs: 00000000661100007a11000096110000ee110000261200003e120000421200004e1200007a1200001a1400006e1400009a1400005ab500005cb500005eb5000060b5000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 38860000
+    m_LastClickedID: 34360
+    m_ExpandedIDs: 0000000026860000288600002a8600002e860000328600003486000036860000388600003a8600003c8600003e86000056860000588600005c8600005e8600006086000064860000966c0600966d0600a46f0600e86f060000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -968,7 +968,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000661100007a11000096110000ee110000261200003e120000421200004e1200007a1200001a1400006e1400009a1400005ab500005cb500005eb5000060b5000000ca9a3b
+    m_ExpandedIDs: 000000002286000026860000288600002a8600002e860000328600003486000036860000388600003a8600003c8600003e86000056860000588600005c8600005e8600006086000064860000966c0600966d0600a46f0600e86f060000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -996,7 +996,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c623000000000000166a0000d66b0000140001001a3a0e00
+    m_ExpandedInstanceIDs: c623000000000000166a0000d66b0000140001001a3a0e00943f0600
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1044,10 +1044,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 609
-    width: 1280
-    height: 382
+    x: 453
+    y: 610
+    width: 843
+    height: 381
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1172,9 +1172,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0abe0000
-      m_LastClickedID: 48650
-      m_ExpandedIDs: 3a28ffff9429ffff2e2bffff3eb90000a4b9000024bc0000f2bc0000b4c200008ac3000030cc000036cd0000a2ce00002cd100009ad900007cdb0000
+      m_SelectedIDs: a8b80000
+      m_LastClickedID: 47272
+      m_ExpandedIDs: 3ee5ffff90e5ffff38f0ffff00fbffffb4b300001eb4000090b50000a8b8000082bb000048bc000046c1000090ce00004ccf000036d10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1190,7 +1190,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 12}
+        m_ClientGUIView: {fileID: 7}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0

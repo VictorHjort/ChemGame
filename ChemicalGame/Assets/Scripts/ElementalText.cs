@@ -47,6 +47,9 @@ public class ElementalText : MonoBehaviour
         s5.text = s5Var;
         s6.text = s6Var;
         s7.text = s7Var;
+        symbol.fontSize = 0.45f;
+        number.color = symbol.color = fullname.color = weight.color = s1.color = s2.color = s3.color = s4.color = s5.color = s6.color = s7.color = Color.black;
+        
 
         renderCube = cube.GetComponent<Renderer>();
         renderCube.material = material;
