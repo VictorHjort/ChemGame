@@ -42,7 +42,7 @@ public class CharacterControlScript : MonoBehaviour
         //Player arrived back at desk
         else if (!player.hasPath && !isPicking)
         {
-            print("You're arrived at your location!");
+           
         }
 
         //Controls the player animation - Walk animation on movement and Idle when zero movement
