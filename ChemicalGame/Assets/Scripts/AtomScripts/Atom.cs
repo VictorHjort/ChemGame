@@ -12,6 +12,7 @@ public class Atom : MonoBehaviour
     //             Code overview
     // 
     //        void Start()
+    // public void checkAtomNumber()
     // public void checkShells()
     // public void checkGroup()
     // public void checkPeriod()
@@ -55,23 +56,15 @@ public class Atom : MonoBehaviour
             AtomSymbol = this.gameObject.GetComponent<ElementalText>().symbolVar;
         }
 
-        // Getting The Atom Number String from the Object and storing it in a int AtomNumber
-        // there is two instances of a number variable being something else than a int "89 - 103" and "57 -  71"
-        // thats why there is a if statement here
-        if (this.gameObject.GetComponent<ElementalText>().numberVar != "89 - 103" && this.gameObject.GetComponent<ElementalText>().numberVar != "57 -  71") 
-        { 
-            AtomNumber = int.Parse(this.gameObject.GetComponent<ElementalText>().numberVar);
-        }
-        if (this.gameObject.GetComponent<ElementalText>().numberVar == "89 - 103" || this.gameObject.GetComponent<ElementalText>().numberVar == "57 -  71")
-        {
-            AtomNumber = 0;
-        }
-
         // Getting The Atom Mass String from the Object and storing it in a float AtomMass
         if (this.gameObject.GetComponent<ElementalText>().weightVar != "") 
         { 
         AtomMass = float.Parse(this.gameObject.GetComponent<ElementalText>().weightVar);
         }
+
+
+        // Checking the Atom Number (numbervar) to pick two out the ones with more than an int ( containing space and - )
+        checkAtomNumber();
 
         // Checking the 7 shells s2var,.3.4..s8var from the game object and if there is an actual input, and not empty
         // the data gets stored in the ints: SecondShell, ThirdShell, FourthShell, FifthShell, SixthShell, SeventhShell.
@@ -94,7 +87,27 @@ public class Atom : MonoBehaviour
         */
     }
 
-
+    // Getting The Atom Number String from the Object and storing it in a int AtomNumber
+    public void checkAtomNumber()
+    {
+        // Getting The Atom Number String from the Object and storing it in a int AtomNumber
+        // there is two instances of a number variable being something else than a int "89 - 103" and "57 -  71"
+        // thats why there is a if statement here
+        if (this.gameObject.GetComponent<ElementalText>().numberVar != "89 - 103" && this.gameObject.GetComponent<ElementalText>().numberVar != "57 - 71")
+        {
+            AtomNumber = int.Parse(this.gameObject.GetComponent<ElementalText>().numberVar);
+        }
+        if (this.gameObject.GetComponent<ElementalText>().numberVar == "89 - 103")
+        {
+            AtomName = this.gameObject.GetComponent<ElementalText>().numberVar + " " + this.gameObject.GetComponent<ElementalText>().nameVar;
+            AtomNumber = 89;
+        }
+        if (this.gameObject.GetComponent<ElementalText>().numberVar == "57 - 71")
+        {
+            AtomName = this.gameObject.GetComponent<ElementalText>().numberVar + " " + this.gameObject.GetComponent<ElementalText>().nameVar;
+            AtomNumber = 57;
+        }
+    }
 
     // The function is getting each shell variable from the gameobject and storing them in ints
     // First it checks if there is a string input or the string is empty
