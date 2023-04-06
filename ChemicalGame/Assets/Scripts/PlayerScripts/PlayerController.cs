@@ -12,6 +12,7 @@ public class CharacterControlScript : MonoBehaviour
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement, bPickedElement;
     public GameObject atomHolder;
+    private GameObject copiedObject, bufferCopy;
 
     private void Start()
     {
@@ -94,12 +95,13 @@ public class CharacterControlScript : MonoBehaviour
             //Now the agent has picked and isPicking is set to false
             isPicking = false;
 
-            GameObject copiedObject = Instantiate(elements[bPickedElement], atomHolder.transform);
-            copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-
-
             //The picked element is now not picked anymore to make the green outline go away
             onHover[bPickedElement].isPicked = false;
+
+            //Duplicating atom element gameobject
+            copiedObject = Instantiate(elements[bPickedElement], atomHolder.transform);
+            copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            
 
             //The player animation is now carrying
             playerAnimator.SetTrigger("carry");
@@ -116,6 +118,9 @@ public class CharacterControlScript : MonoBehaviour
             {
                 onHover[i].picking = false;
             }
+
+
+        
           
             //Setting the agent animation to idle/stand.
             playerAnimator.SetTrigger("stand");
