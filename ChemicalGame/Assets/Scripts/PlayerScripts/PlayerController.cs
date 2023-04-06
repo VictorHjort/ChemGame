@@ -12,7 +12,6 @@ public class CharacterControlScript : MonoBehaviour
     public GameObject[] elements;
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement;
-    [SerializeField] private DoorScript doorScript;
     private void Start()
     {
         for(int i = 0; i < elements.Length; i++)
@@ -47,7 +46,7 @@ public class CharacterControlScript : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPoint;
 
-            //Nico door script
+            
             
 
             if (Physics.Raycast(ray, out hitPoint))
