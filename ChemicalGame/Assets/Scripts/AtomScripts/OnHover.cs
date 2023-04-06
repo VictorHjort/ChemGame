@@ -13,13 +13,23 @@ public class OnHover : MonoBehaviour
         outline = GetComponent<Outline>();
         outline.enabled = false;
     }
-    
 
-    
+    private void Update()
+    {
+        if(isPicked)
+        {
+            outline.enabled = true;
+            outline.OutlineColor = Color.green;
+        }
+    }
+
 
     void OnMouseOver()
     {
-        outline.enabled = true;
+        if (!isPicked)
+        {
+            outline.enabled = true;
+        }
         isOver = true;
     }
 

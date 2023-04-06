@@ -23,15 +23,18 @@ public class CharacterControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Checking all elements 
-        for (int i = 0; i < onHover.Length; i++)
+        if (!isPicking)
         {
-            isOn = onHover[i].isOver;
-            if (isOn)
+            //Checking all elements 
+            for (int i = 0; i < onHover.Length; i++)
             {
-                //Breaking ou of the for loop if player is hovering over an element
-                pickedElement = i;
-                break;
+                isOn = onHover[i].isOver;
+                if (isOn)
+                {
+                    //Breaking ou of the for loop if player is hovering over an element
+                    pickedElement = i;
+                    break;
+                }
             }
         }
 
@@ -47,7 +50,7 @@ public class CharacterControlScript : MonoBehaviour
                     {
                         onHover[i].outline.enabled = false;
                     }
-                onHover[pickedElement].outline.enabled = true;
+                onHover[pickedElement].isPicked = true;
                 targetDest.transform.position = hitPoint.point;
                 player.SetDestination(hitPoint.point);
             }
