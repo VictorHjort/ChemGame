@@ -11,6 +11,7 @@ public class CharacterControlScript : MonoBehaviour
     public GameObject[] elements;
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement, bPickedElement;
+    public GameObject atomHolder;
 
     private void Start()
     {
@@ -76,7 +77,7 @@ public class CharacterControlScript : MonoBehaviour
         {
             //making isPicking true to keep track of if the agent i picking up an atom
             isPicking = true;
-
+            
             //Letting all the onHover scripts know the agent is now picking an element
             for (int i = 0; i < onHover.Length; i++)
             {
@@ -92,6 +93,10 @@ public class CharacterControlScript : MonoBehaviour
 
             //Now the agent has picked and isPicking is set to false
             isPicking = false;
+
+            GameObject copiedObject = Instantiate(elements[bPickedElement], atomHolder.transform);
+            copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
 
             //The picked element is now not picked anymore to make the green outline go away
             onHover[bPickedElement].isPicked = false;
