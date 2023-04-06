@@ -19,6 +19,7 @@ public class CharacterControlScript : MonoBehaviour
         {
             onHover[i] = elements[i].GetComponent<OnHover>();
         }
+        doorScript = doors.GetComponent<DoorScript>();
     }
 
     // Update is called once per frame
@@ -44,7 +45,10 @@ public class CharacterControlScript : MonoBehaviour
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPoint;
+
+            //Nico door script
             doorScript.OpenDoor();
+
             if (Physics.Raycast(ray, out hitPoint))
             {
                 for (int i = 0; i < onHover.Length; i++)
