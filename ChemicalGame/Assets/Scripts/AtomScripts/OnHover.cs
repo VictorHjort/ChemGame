@@ -6,7 +6,7 @@ public class OnHover : MonoBehaviour
 
     public Outline outline;
     public Camera cam;
-    public bool isOver, isPicked;
+    public bool isOver, isPicked, picking;
 
     void Start()
     {
@@ -21,12 +21,16 @@ public class OnHover : MonoBehaviour
             outline.enabled = true;
             outline.OutlineColor = Color.green;
         }
+        if(!isPicked && picking)
+        {
+            outline.enabled = false;
+        }
     }
 
 
     void OnMouseOver()
     {
-        if (!isPicked)
+        if (!isPicked && !picking)
         {
             outline.enabled = true;
         }

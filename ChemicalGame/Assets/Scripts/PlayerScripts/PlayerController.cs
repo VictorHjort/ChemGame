@@ -10,16 +10,13 @@ public class CharacterControlScript : MonoBehaviour
     private bool isPicking, isOn = false;
     public GameObject[] elements;
     private OnHover[] onHover = new OnHover[90];
-    private int pickedElement;
-    public GameObject doors;
-    private DoorScript doorScript;
+    private int pickedElement, bPickedElement;
     private void Start()
     {
         for(int i = 0; i < elements.Length; i++)
         {
             onHover[i] = elements[i].GetComponent<OnHover>();
         }
-        doorScript = doors.GetComponent<DoorScript>();
     }
 
     // Update is called once per frame
@@ -46,16 +43,16 @@ public class CharacterControlScript : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPoint;
 
-            //Nico door script
-            doorScript.OpenDoor();
-
             if (Physics.Raycast(ray, out hitPoint))
             {
                 for (int i = 0; i < onHover.Length; i++)
                     {
                         onHover[i].outline.enabled = false;
+                        onHover[i].isPicked = false;
+                        onHover[i].picking = true;
                     }
                 onHover[pickedElement].isPicked = true;
+                bPickedElement = pickedElement;
                 targetDest.transform.position = hitPoint.point;
                 player.SetDestination(hitPoint.point);
             }
@@ -64,6 +61,10 @@ public class CharacterControlScript : MonoBehaviour
         if (player.hasPath && !isPicking)
         {
             isPicking = true;
+            for (int i = 0; i < onHover.Length; i++)
+            {
+                onHover[i].picking = true;
+            }
         }
 
         //Check if player is at pressed destination yet
@@ -71,12 +72,16 @@ public class CharacterControlScript : MonoBehaviour
         {
             player.SetDestination(deskDest.transform.position);
             isPicking = false;
+            onHover[bPickedElement].isPicked = false;
         }
 
         //Player arrived back at desk
         else if (!player.hasPath && !isPicking)
         {
-           
+            for (int i = 0; i < onHover.Length; i++)
+            {
+                onHover[i].picking = false;
+            }
         }
 
         //Controls the player animation - Walk animation on movement and Idle when zero movement
