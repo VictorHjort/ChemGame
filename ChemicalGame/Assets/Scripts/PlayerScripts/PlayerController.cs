@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,11 +25,7 @@ public class CharacterControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            doorScript.OpenDoor();
-            
-        }
+        
         if (!isPicking)
         {
             //Checking all elements 
@@ -92,7 +89,7 @@ public class CharacterControlScript : MonoBehaviour
         {
             playerAnimator.SetBool("isWalking", false);
         }
-
+        
     }
 
 }
