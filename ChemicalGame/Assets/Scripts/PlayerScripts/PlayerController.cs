@@ -11,20 +11,24 @@ public class CharacterControlScript : MonoBehaviour
     public GameObject[] elements;
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement;
-    public GameObject doors;
-    private DoorScript doorScript;
+    [SerializeField] private DoorScript doorScript;
     private void Start()
     {
         for(int i = 0; i < elements.Length; i++)
         {
             onHover[i] = elements[i].GetComponent<OnHover>();
         }
-        doorScript = doors.GetComponent<DoorScript>();
+        //doorScript = GetComponent<DoorScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            doorScript.OpenDoor();
+            
+        }
         if (!isPicking)
         {
             //Checking all elements 
@@ -39,7 +43,7 @@ public class CharacterControlScript : MonoBehaviour
                 }
             }
         }
-
+       
         //Check for mouse input and makes sure the player can only press when they aren't walking
         if (Input.GetMouseButtonDown(0) && !isPicking && isOn)
         {
@@ -47,7 +51,7 @@ public class CharacterControlScript : MonoBehaviour
             RaycastHit hitPoint;
 
             //Nico door script
-            doorScript.OpenDoor();
+            
 
             if (Physics.Raycast(ray, out hitPoint))
             {
@@ -90,4 +94,5 @@ public class CharacterControlScript : MonoBehaviour
         }
 
     }
+
 }
