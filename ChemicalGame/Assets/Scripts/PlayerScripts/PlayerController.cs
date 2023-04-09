@@ -11,7 +11,7 @@ public class CharacterControlScript : MonoBehaviour
     public GameObject[] elements;
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement, bPickedElement;
-    public GameObject atomHolder;
+    public GameObject atomHolder, atomDeskPlace;
     private GameObject copiedObject;
 
     private void Start()
@@ -118,6 +118,9 @@ public class CharacterControlScript : MonoBehaviour
             {
                 onHover[i].picking = false;
             }
+
+            copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlace.transform);
+            copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
             //Destroys all childs of the AtomHolder
             for (var i = atomHolder.transform.childCount - 1; i >= 0; i--)
