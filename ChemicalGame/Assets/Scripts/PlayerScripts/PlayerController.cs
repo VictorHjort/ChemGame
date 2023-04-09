@@ -119,6 +119,7 @@ public class CharacterControlScript : MonoBehaviour
                 onHover[i].picking = false;
             }
 
+            //Destroys all childs of the AtomHolder
             for (var i = atomHolder.transform.childCount - 1; i >= 0; i--)
             {
                 Object.Destroy(atomHolder.transform.GetChild(i).gameObject);
