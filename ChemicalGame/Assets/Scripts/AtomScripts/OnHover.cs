@@ -24,6 +24,7 @@ public class OnHover : MonoBehaviour
         if(!isPicked && picking)
         {
             outline.enabled = false;
+            outline.OutlineColor = Color.white;
         }
     }
 
