@@ -124,7 +124,6 @@ public class CharacterControlScript : MonoBehaviour
             copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlaces[atomDeskNum].transform);
             copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             atomDeskNum += 1;
-
             //Destroys all childs of the AtomHolder
             for (var i = atomHolder.transform.childCount - 1; i >= 0; i--)
             {
@@ -137,6 +136,7 @@ public class CharacterControlScript : MonoBehaviour
 
             //Now we're not going back anymore, we're back at the desk.
             goingBack = false;
+            
         }
     }
 }
