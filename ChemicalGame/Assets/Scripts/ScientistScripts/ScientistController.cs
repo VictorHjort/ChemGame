@@ -38,13 +38,12 @@ public class ScientistController : MonoBehaviour
 
             readyToWalk = false;
             doorScript.CloseDoor();
-            
         }
 
         if (doneWithTask)
         {
             scientist.SetDestination(scientistDoneDest.transform.position);
-            //doorScript.OpenDoor();
+            doorScript.OpenDoor();
         }
 
         if(scientist.velocity != Vector3.zero)

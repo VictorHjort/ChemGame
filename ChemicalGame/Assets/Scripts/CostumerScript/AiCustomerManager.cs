@@ -43,9 +43,9 @@ public class AiCustomerManager : MonoBehaviour
         }
 
     }
-    /*public void Task(GameObject receivedObject) { AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
+    public void Task(GameObject receivedObject) { AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
 
-    }*/
+    }
     public void NewAi() 
     {
             AiCustomerIndex++;

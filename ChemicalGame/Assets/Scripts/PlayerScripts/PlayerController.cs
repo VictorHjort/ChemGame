@@ -11,8 +11,9 @@ public class CharacterControlScript : MonoBehaviour
     public GameObject[] elements, atomDeskPlaces;
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement, bPickedElement, atomDeskNum;
-    public GameObject atomHolder,originalParent;
+    public GameObject atomHolder, originalParent;
     private GameObject copiedObject;
+    AiCustomerManager theaimanager;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class CharacterControlScript : MonoBehaviour
             onHover[i] = elements[i].GetComponent<OnHover>();
         }
         atomDeskNum = 0;
+        theaimanager = FindObjectOfType<AiCustomerManager>();
+
     }
 
     // Update is called once per frame
@@ -136,7 +139,7 @@ public class CharacterControlScript : MonoBehaviour
 
             //Now we're not going back anymore, we're back at the desk.
             goingBack = false;
-            
+            theaimanager.Task(originalParent.transform.GetChild(0).gameObject);
         }
     }
 }
