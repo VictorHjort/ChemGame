@@ -116,8 +116,10 @@ using UnityEngine;
     {
         // storing s1var from the object (or actually the ElementalTextScript) 
         // Into int FirstShell
-        FirstShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s1Var);
-
+        if (this.gameObject.GetComponent<ElementalText>().s2Var != "")
+        {
+            FirstShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s1Var);
+        }
         // Checking if something is in the input for the second shell (the text variable s2 var)
         // If there is an input (not "") the string is converted to a int and stored in int SecondShell
         if (this.gameObject.GetComponent<ElementalText>().s2Var != "")
