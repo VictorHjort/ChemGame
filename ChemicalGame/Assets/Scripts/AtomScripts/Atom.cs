@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Atom : MonoBehaviour
+    public class Atom : MonoBehaviour
 {
     public string AtomName, AtomSymbol;
     public float AtomMass;
@@ -385,7 +385,14 @@ public class Atom : MonoBehaviour
         return ClickedAtomVariable == SeventhShell;
     }
 
-
+    public bool CheckGroup(int ClickedAtomVariable)
+    {
+        return ClickedAtomVariable == Group;
+    }
+    public bool CheckPeriod(int ClickedAtomVariable)
+    {
+        return ClickedAtomVariable == Period;
+    }
     // Update is called once per frame
     // Is not being used
     void Update()
