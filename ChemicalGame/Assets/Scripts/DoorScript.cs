@@ -10,7 +10,8 @@ public class DoorScript : MonoBehaviour
     public float DoorSpeed;
     public float rightDestination;
     public float leftDestination;
-    private bool doorIsOpen = false;
+    public float rightCloseDestination;
+    public float leftCloseDestination;
 
     public void OpenDoor()
     {
@@ -28,39 +29,29 @@ public class DoorScript : MonoBehaviour
         }
         leftDoor.transform.position = leftPos;
 
-        if (rightPos.z >= rightDestination && leftPos.z <= leftDestination)
-        {
-            doorIsOpen = true;
-        }
+      
 
     }
     public void CloseDoor()
     {
         Vector3 rightPos = rightDoor.transform.position;
-        if (rightPos.z >= rightDestination)
+        if (rightPos.z >= rightCloseDestination)
         {
             rightPos.z += -DoorSpeed * Time.deltaTime;
         }
         rightDoor.transform.position = rightPos;
 
         Vector3 leftPos = leftDoor.transform.position;
-        if (leftPos.z <= leftDestination)
+        if (leftPos.z <= leftCloseDestination)
         {
             leftPos.z += +DoorSpeed * Time.deltaTime;
         }
         leftDoor.transform.position = leftPos;
 
-        if (rightPos.z <= rightDestination && leftPos.z >= leftDestination)
-        {
-            doorIsOpen = false;
-        }
+        
     }
 
-    public bool DoorIsOpen
-    {
-        get { return doorIsOpen; }
-    }
-
+   
 }
 
 
