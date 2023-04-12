@@ -27,7 +27,7 @@ public class ScientistController : MonoBehaviour
         {
             scientist.SetDestination(scientistTargetDest.transform.position);
             doorScript.OpenDoor();
-            print("im here");
+           // print("im here");
         }
         if (scientist.hasPath)
         {

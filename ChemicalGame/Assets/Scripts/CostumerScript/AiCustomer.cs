@@ -17,14 +17,41 @@ public class AiCustomer : MonoBehaviour
     }
     [SerializeField] Dropdown Tasks;
 
-    public string Request, Success, Fail, Hint1, Hint2;
-    public float ReqAtomMass;
-    public int ReqAtomNumber, ReqFirstShell, ReqSecondShell, ReqThirdShell, ReqFourthShell, ReqFifthShell, ReqSixthShell, ReqSeventhShell;
-    public int ReqGroup, ReqPeriod;
-    public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
+    [Header("Dialog")]
+    public string Request;
+    public string Success;
+    public string Hint1;
+    public string Hint2;
+    public string Failure;
+
+    [Header("Group, Period & Group And Period")]
+    public int RequestedGroup;
+    public int RequestedPeriod;
+
+    [Header("Atom Opbygnind")]
+    public int RequestedAtomNumber;
+
+    [Header("Atom Masse")]
+    public float RequestedAtomMass;
+
+    [Header("Ellektroner I YdersteSkald")]
+    public int RequestedOuterShell;
+
+    [Header("Ingen ide lige nu ^^' ")]
+    public int RequestedFirstShell;
+    public int RequestedSecondShell;
+    public int RequestedThirdShell;
+    public int RequestedFourthShell;
+    public int RequestedFifthShell;
+    public int RequestedSixthShell;
+    public int RequestedSeventhShell;
+    
+    [System.NonSerialized]
+    public bool Hint1Bool = false, Hint2Bool = false, FailBool = false, TaskCompleted = false;
     private int CustommerTask;
     public AiCustomerManager theAIManagaer;
-    
+
+
     public void Start()
     {
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
@@ -78,6 +105,7 @@ public class AiCustomer : MonoBehaviour
     }
     public void CustommerRecieved(GameObject receivedObject)
     {
+        print(receivedObject.GetComponent<Atom>().AtomName);
         if (CustommerTask == 0)
         {
             ReceiveObjectGroup(receivedObject);
@@ -110,16 +138,10 @@ public class AiCustomer : MonoBehaviour
         }
         if (CustommerTask == 6)
         {
+            ReceiveObjectOuterShell(receivedObject);
             print("what 7");
         }
     }
-    /*
-     * 
-     * Det her er functionerne der kører hvis svaret er rigtigt -
-     * Correct, eller forkert - Wrong.
-     * Hvis svaret er korrekt så køre funktionen Correct()
-     * Hvis svaret derimod er forkert køre funktionen Wrong() 
-     */
 
     
     
@@ -133,138 +155,151 @@ public class AiCustomer : MonoBehaviour
 
     public void ReceiveObjectAtomNumber(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckAtomNumber(ReqAtomNumber))
+        if (receivedObject.GetComponent<Atom>().CheckAtomNumber(RequestedAtomNumber))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckAtomNumber(ReqAtomNumber))
+        if (!receivedObject.GetComponent<Atom>().CheckAtomNumber(RequestedAtomNumber))
         {
             Wrong();
         }
     }
     public void ReceiveObjectAtomMass(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckMass(ReqAtomMass))
+        if (receivedObject.GetComponent<Atom>().CheckMass(RequestedAtomMass))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckMass(ReqAtomMass))
+        if (!receivedObject.GetComponent<Atom>().CheckMass(RequestedAtomMass))
         {
             Wrong(); 
         }
     }
     public void ReceiveObjectGroup(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckGroup(ReqGroup))
+        if (receivedObject.GetComponent<Atom>().CheckGroup(RequestedGroup))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckGroup(ReqGroup))
+        if (!receivedObject.GetComponent<Atom>().CheckGroup(RequestedGroup))
         {
             Wrong();
         }
     }
     public void ReceiveObjectPeriod(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckPeriod(ReqPeriod))
+        if (receivedObject.GetComponent<Atom>().CheckPeriod(RequestedPeriod))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckPeriod(ReqPeriod))
+        if (!receivedObject.GetComponent<Atom>().CheckPeriod(RequestedPeriod))
         {
             Wrong();
         }
     }
     public void ReceiveObjectGroupeAndPeriod(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckGroup(ReqGroup) && receivedObject.GetComponent<Atom>().CheckPeriod(ReqPeriod))
+        if (receivedObject.GetComponent<Atom>().CheckGroup(RequestedGroup) && receivedObject.GetComponent<Atom>().CheckPeriod(RequestedPeriod))
         {
             Correct();
         }
-        if(receivedObject.GetComponent<Atom>().CheckGroup(ReqGroup))
+        if(receivedObject.GetComponent<Atom>().CheckGroup(RequestedGroup))
         {
             Wrong();
         }
-        if(!receivedObject.GetComponent<Atom>().CheckPeriod(ReqPeriod))
+        if(!receivedObject.GetComponent<Atom>().CheckPeriod(RequestedPeriod))
         {
             Wrong();
         }
     }
     public void ReceiveObjectFirstShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckFirst(ReqFirstShell))
+        if (receivedObject.GetComponent<Atom>().CheckFirst(RequestedFirstShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckFirst(ReqFirstShell))
+        if (!receivedObject.GetComponent<Atom>().CheckFirst(RequestedFirstShell))
         {
             Wrong();
         }
     }
     public void ReceiveObjectSecondShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckSecond(ReqSecondShell))
+        if (receivedObject.GetComponent<Atom>().CheckSecond(RequestedSecondShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckSecond(ReqSecondShell))
+        if (!receivedObject.GetComponent<Atom>().CheckSecond(RequestedSecondShell))
         {
             Wrong();
         }
     }
     public void ReceiveObjectThirdShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckThird(ReqThirdShell))
+        if (receivedObject.GetComponent<Atom>().CheckThird(RequestedThirdShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckThird(ReqThirdShell))
+        if (!receivedObject.GetComponent<Atom>().CheckThird(RequestedThirdShell))
         {
             Wrong();
         }
     }
     public void ReceiveObjectFourthShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckFourth(ReqFourthShell))
+        if (receivedObject.GetComponent<Atom>().CheckFourth(RequestedFourthShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckFourth(ReqFourthShell))
+        if (!receivedObject.GetComponent<Atom>().CheckFourth(RequestedFourthShell))
         {
             Wrong();
         }
     }
     public void ReceiveObjectFifthShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckFifth(ReqFifthShell))
+        if (receivedObject.GetComponent<Atom>().CheckFifth(RequestedFifthShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckFifth(ReqFifthShell))
+        if (!receivedObject.GetComponent<Atom>().CheckFifth(RequestedFifthShell))
         {
             Wrong();
         }
     }
     public void ReceiveObjectSixthShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckSixth(ReqSixthShell))
+        if (receivedObject.GetComponent<Atom>().CheckSixth(RequestedSixthShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckSixth(ReqSixthShell))
+        if (!receivedObject.GetComponent<Atom>().CheckSixth(RequestedSixthShell))
         {
             Wrong();
         }
     }
     public void ReceiveObjectSeventhShell(GameObject receivedObject)
     {
-        if (receivedObject.GetComponent<Atom>().CheckSeventh(ReqSeventhShell))
+        if (receivedObject.GetComponent<Atom>().CheckSeventh(RequestedSeventhShell))
         {
             Correct();
         }
-        if (!receivedObject.GetComponent<Atom>().CheckSeventh(ReqSeventhShell))
+        if (!receivedObject.GetComponent<Atom>().CheckSeventh(RequestedSeventhShell))
         {
             Wrong();
+        }
+    }
+    public void ReceiveObjectOuterShell(GameObject receivedObject)
+    {
+        print(receivedObject.GetComponent<Atom>().Shells);
+        if (receivedObject.GetComponent<Atom>().CheckOuterShell(RequestedOuterShell, receivedObject.GetComponent<Atom>().Shells))
+        {
+            Correct();
+        }
+        if (!receivedObject.GetComponent<Atom>().CheckOuterShell(RequestedOuterShell, receivedObject.GetComponent<Atom>().Shells))
+        {
+            Wrong();
+            print(receivedObject.GetComponent<Atom>().Shells);
         }
     }
 
@@ -276,6 +311,14 @@ public class AiCustomer : MonoBehaviour
     {
         FailBool = WhatState;
     }
+
+    /*
+    * 
+    * Det her er functionerne der kører hvis svaret er rigtigt -
+    * Correct, eller forkert - Wrong.
+    * Hvis svaret er korrekt så køre funktionen Correct()
+    * Hvis svaret derimod er forkert køre funktionen Wrong() 
+    */
     public void Correct()
     {
         Debug.Log(Success);
@@ -283,22 +326,28 @@ public class AiCustomer : MonoBehaviour
 
     public void Wrong()
     {
-        if (FailBool)
-        {
-            print(Fail); //fail dialog text
-            //leaving and get new ai
-        }
-        if (Hint2Bool)
-        {
-            print(Hint2); //hint 2 text
-            Hint2Bool = false;
-            FailBool = true;
-        }
+        
         if (Hint1Bool)
         {
             print(Hint1); //hint 1 text
             Hint1Bool = false;
             Hint2Bool = true;
+        }
+        else if (Hint2Bool)
+        {
+            print(Hint2); //hint 2 text
+            Hint2Bool = false;
+            FailBool = true;
+        }
+        else if (FailBool)
+        {
+            print(Failure); //fail dialog text
+            //leaving and get new ai
+        }
+
+        else
+        {
+            Hint1Bool = true;
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
     public string AtomName, AtomSymbol;
     public float AtomMass;
     public int AtomNumber, FirstShell, SecondShell, ThirdShell, FourthShell, FifthShell, SixthShell, SeventhShell;
-    public int Group, Period;
+    public int Group, Period, Shells;
 
     //             Code overview
     // 
@@ -119,12 +119,14 @@ using UnityEngine;
         if (this.gameObject.GetComponent<ElementalText>().s2Var != "")
         {
             FirstShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s1Var);
+            Shells = 1;
         }
         // Checking if something is in the input for the second shell (the text variable s2 var)
         // If there is an input (not "") the string is converted to a int and stored in int SecondShell
         if (this.gameObject.GetComponent<ElementalText>().s2Var != "")
         {
             SecondShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s2Var);
+            Shells = 2;
         }
 
         // Checking if something is in the input for the thrid shell (the text variable s3 var)
@@ -132,6 +134,7 @@ using UnityEngine;
         if (this.gameObject.GetComponent<ElementalText>().s3Var != "")
         {
             ThirdShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s3Var);
+            Shells = 3;
         }
 
         // Checking if something is in the input for the fourth shell (the text variable s4 var)
@@ -139,6 +142,7 @@ using UnityEngine;
         if (this.gameObject.GetComponent<ElementalText>().s4Var != "")
         {
             FourthShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s4Var);
+            Shells = 4;
         }
 
         // Checking if something is in the input for the fifth shell (the text variable s5 var)
@@ -146,6 +150,7 @@ using UnityEngine;
         if (this.gameObject.GetComponent<ElementalText>().s5Var != "")
         {
             FifthShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s5Var);
+            Shells = 5;
         }
 
         // Checking if something is in the input for the sixth shell (the text variable s6 var)
@@ -153,6 +158,7 @@ using UnityEngine;
         if (this.gameObject.GetComponent<ElementalText>().s6Var != "")
         {
             SixthShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s6Var);
+            Shells = 6;
         }
 
         // Checking if something is in the input for the seventh shell (the text variable s7 var)
@@ -160,6 +166,7 @@ using UnityEngine;
         if (this.gameObject.GetComponent<ElementalText>().s7Var != "")
         {
             SeventhShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s7Var);
+            Shells = 7;
         }
     }
 
@@ -386,7 +393,42 @@ using UnityEngine;
     {
         return ClickedAtomVariable == SeventhShell;
     }
+    public bool CheckOuterShell(int ClickedAtomVariable, int OuterShell)
+    {
+        if (OuterShell == 7)
+        {
+            return ClickedAtomVariable == SeventhShell;
+        }
+        else if (OuterShell == 6)
+        {
+            return ClickedAtomVariable == SixthShell;
+        }
+        else if (OuterShell == 5)
+        {
+            return ClickedAtomVariable == FifthShell;
+        }
+        else if (OuterShell == 4)
+        {
+            return ClickedAtomVariable == FourthShell;
+        }
+        else if (OuterShell == 3)
+        {
+            return ClickedAtomVariable == ThirdShell;
+        }
+        else if (OuterShell == 2)
+        {
+            return ClickedAtomVariable == SecondShell;
+        }
+        else if (OuterShell == 1)
+        {
+            return ClickedAtomVariable == FirstShell;
+        }
+        else 
+        { 
+            return false; 
+        }
 
+    }
     public bool CheckGroup(int ClickedAtomVariable)
     {
         return ClickedAtomVariable == Group;
@@ -395,8 +437,11 @@ using UnityEngine;
     {
         return ClickedAtomVariable == Period;
     }
+    
+    
     // Update is called once per frame
     // Is not being used
+
     void Update()
     {
 
