@@ -47,15 +47,16 @@ public class ScientistController : MonoBehaviour
 
         if (doneWithTask && correctAnswer)
         {
-            
+            scientistAnimator.SetBool("correctAnswer", true);
             scientist.SetDestination(scientistDoneDest.transform.position);
             doorScript.OpenDoor();
+            answerGiven = true;
         }
 
 
-        if(doneWithTask && !scientist.hasPath)
+        if(answerGiven && !scientist.hasPath)
         {
-
+            
         }
         if(scientist.velocity != Vector3.zero)
         {
