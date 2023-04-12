@@ -29,15 +29,15 @@ public class AiCustomerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Hint1Bool == true)
         {
-            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
+           // AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
         }
         else if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Hint2Bool == true)
         {
-            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
+            //AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
         }
         else if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().FailBool == true)
         {
-            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
+         //   AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
             NewAi();
             AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().SetFailBool(false);
         }
