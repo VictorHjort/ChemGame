@@ -52,10 +52,11 @@ public class ScientistController : MonoBehaviour
             
             scientist.SetDestination(scientistDoneDest.transform.position);
             doorScript.OpenDoor();
+            answerGiven = true;
         }
 
 
-        if(doneWithTask && !scientist.hasPath)
+        if(answerGiven && !scientist.hasPath)
         {
             theAIManagaer.NewAi();
         }
