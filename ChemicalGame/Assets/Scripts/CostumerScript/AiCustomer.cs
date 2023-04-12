@@ -52,7 +52,7 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSeventhShell;
     
     [System.NonSerialized]
-    public bool Hint1Bool = false, Hint2Bool = false, FailBool = false, TaskCompleted = false;
+    public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
     private int CustommerTask;
     public AiCustomerManager theAIManagaer;
 
@@ -61,6 +61,7 @@ public class AiCustomer : MonoBehaviour
     {
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
         CustommerTaskSet();
+        forTextField.text = Request;
     }
     // Update is called once per frame
     void Update()
@@ -73,39 +74,39 @@ public class AiCustomer : MonoBehaviour
         if (Tasks == Dropdown.Group)
         {
             CustommerTask = 0;
-            forTextField.text = Request;
+            
 
         }
         else if (Tasks == Dropdown.Period)
         {
             CustommerTask = 1;
-            forTextField.text = Request;
+            
         }
         else if (Tasks == Dropdown.GroupAndPeriod)
         {
             CustommerTask = 2;
-            forTextField.text = Request;
+            
         }
         else if (Tasks == Dropdown.AkaliMetaler)
         {
             CustommerTask = 3;
-            forTextField.text = Request;
+            
 
         }
         else if (Tasks == Dropdown.AtomOpbygning)
         {
             CustommerTask = 4;
-            forTextField.text = Request;
+            
         }
         else if (Tasks == Dropdown.AtomMasse)
         {
             CustommerTask = 5;
-            forTextField.text = Request;
+            
         }
         else if (Tasks == Dropdown.EllektronerIYdersteSkald)
         {
             CustommerTask = 6;
-            forTextField.text = Request;
+            
         }
     }
     public void CustommerRecieved(GameObject receivedObject)
@@ -113,37 +114,31 @@ public class AiCustomer : MonoBehaviour
         if (CustommerTask == 0)
         {
             ReceiveObjectGroup(receivedObject);
-            print("what 1");
         }
         if (CustommerTask == 1)
         {
             ReceiveObjectPeriod(receivedObject);
-            print("what 2");
         }
 
         if (CustommerTask == 2)
         {
             ReceiveObjectGroupeAndPeriod(receivedObject);
-            print("what 3");
         }
         if (CustommerTask == 3)
         {
             ReceiveObjectGroupeAndPeriod(receivedObject);
-            print("what 4");
         }
         if (CustommerTask == 4)
         {
-            print("wha 5");
+
         }
         if (CustommerTask == 5)
         {
             ReceiveObjectAtomMass(receivedObject);
-            print("what 6");
         }
         if (CustommerTask == 6)
         {
             ReceiveObjectOuterShell(receivedObject);
-            print("what 7");
         }
     }
 
@@ -330,31 +325,22 @@ public class AiCustomer : MonoBehaviour
 
     public void Wrong()
     {
-        
-        if (Hint1Bool)
+        if (FailBool)
         {
-            print(Hint1); //hint 1 text
-            Hint1Bool = false;
-            Hint2Bool = true;
-            forTextField.text = Hint1;
+            //leaving and get new ai
+            forTextField.text = Failure;
         }
-        else if (Hint2Bool)
+        if (Hint2Bool)
         {
-            print(Hint2); //hint 2 text
             Hint2Bool = false;
             FailBool = true;
             forTextField.text = Hint2;
         }
-        else if (FailBool)
+        if (Hint1Bool)
         {
-            print(Failure); //fail dialog text
-            //leaving and get new ai
-            forTextField.text = Failure;
-        }
-
-        else
-        {
-            Hint1Bool = true;
+            Hint1Bool = false;
+            Hint2Bool = true;
+            forTextField.text = Hint1;
         }
     }
 }
