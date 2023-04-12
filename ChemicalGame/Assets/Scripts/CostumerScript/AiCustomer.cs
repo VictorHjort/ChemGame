@@ -8,9 +8,11 @@ public class AiCustomer : MonoBehaviour
 
 
     //Variables for modifying text
+    [Header("The Text Field")]
     public TMP_Text forTextField;
 
     private ScientistController scientistController;
+
 
     public enum Dropdown
     {
@@ -22,14 +24,26 @@ public class AiCustomer : MonoBehaviour
         AtomMasse,
         EllektronerIYdersteSkald
     }
-    [SerializeField] Dropdown Tasks;
+    public enum TextStyle
+    {
+        StringAtomnameStringGroupString,
+        StringAtomnameStringAtomnumberString,
+        StringAtomnumberStringAtomnameString
+    }
 
-    [Header("Dialog")]
+    [SerializeField] [Header("The AI's Task")] Dropdown Tasks;
+    [SerializeField] [Header("Dialog")]
     public string Request;
     public string Success;
-    public string Hint1;
-    public string Hint2;
     public string Failure;
+
+    [SerializeField] [Header("TekstDisplay (Husk MellemRum)")] TextStyle TekstStyle;
+    public string Hint1Part1;
+    public string Hint1Part2;
+    public string Hint1Part3;
+    public string Hint2Part1;
+    public string Hint2Part2;
+    public string Hint2Part3;
 
     [Header("Group, Period & Group And Period")]
     public int RequestedGroup;
@@ -53,10 +67,10 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSixthShell;
     public int RequestedSeventhShell;
     
-    [System.NonSerialized]
-    public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
-    private int CustommerTask;
-    public AiCustomerManager theAIManagaer;
+    [System.NonSerialized] public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
+    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber;
+    [System.NonSerialized] public string Hint1, Hint2, AtomName;
+    [System.NonSerialized] public AiCustomerManager theAIManagaer;
 
 
     public void Start()
@@ -72,6 +86,53 @@ public class AiCustomer : MonoBehaviour
       // print(Tasks);
     }
 
+
+    /*
+     * Her bliver Hint 1 og Hint 2's format lavet, altså ex. string + atomname + string + atomnumber + string 
+     * 
+     */
+    public void textStyleChoice(GameObject receivedObject)
+    {
+        AtomName = receivedObject.GetComponent<Atom>().AtomName;
+        AtomGroup = receivedObject.GetComponent<Atom>().Group;
+        AtomNumber = receivedObject.GetComponent<Atom>().AtomNumber;
+
+        if (TekstStyle == TextStyle.StringAtomnameStringGroupString)
+        {
+            Hint1 = Hint1Part1  + AtomName + Hint1Part2 + AtomGroup + Hint1Part3;
+            Hint2 = Hint2Part1  + AtomName + Hint2Part2 + AtomGroup  + Hint2Part3;
+
+        }
+        if (TekstStyle == TextStyle.StringAtomnameStringAtomnumberString)
+        {
+            Hint1 = Hint1Part1  + AtomName + Hint1Part2  + AtomNumber + Hint1Part3;
+            Hint2 = Hint2Part1  + AtomName + Hint2Part2  + AtomNumber + Hint2Part3;
+        }
+        if(TekstStyle == TextStyle.StringAtomnumberStringAtomnameString)
+        {
+            Hint1 = Hint1Part1  + AtomNumber + Hint1Part2  + AtomName  + Hint1Part3;
+            Hint2 = Hint2Part1  + AtomNumber + Hint2Part2  + AtomName  + Hint2Part3;
+
+        }
+
+
+    }
+
+
+
+    /*
+     * Her bliver CustommerTask tildelt
+     * CustommerTask = 0 i Group og CustommerTask = 1 i Period.
+     * for overblik er
+     * 0 = Group
+     * 1 = Period
+     * 2 = Group And Period
+     * 3 = Akali Metaller
+     * 4 = Atom Opbygning,
+     * 5 = Atom Masse
+     * 6 = Ellektroner I Yderste Skald
+     * 
+     */
     public void CustommerTaskSet()
     {
         if (Tasks == Dropdown.Group)
@@ -112,8 +173,17 @@ public class AiCustomer : MonoBehaviour
             
         }
     }
+    /*
+     * Her bliver løsningen valgt udfra hvad man vælger Group,Period,GroupAndPeriod ETC.
+     * det bliver valgt ud fra int CustommerTask, I drop down Menu er Group = 0 Period = 1 osv.
+     * så fra top til bunden, går det fra 0 til 6 (atm)
+     * se listen ovenover.
+     * 
+     */
     public void CustommerRecieved(GameObject receivedObject)
     {
+        textStyleChoice(receivedObject);
+
         if (CustommerTask == 0)
         {
             ReceiveObjectGroup(receivedObject);
@@ -348,5 +418,9 @@ public class AiCustomer : MonoBehaviour
             Hint2Bool = true;
             forTextField.text = Hint1;
         }
+    }
+    public void setRequest()
+    {
+        forTextField.text = Request;
     }
 }
