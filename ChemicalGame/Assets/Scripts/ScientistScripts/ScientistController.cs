@@ -13,6 +13,8 @@ public class ScientistController : MonoBehaviour
     private DoorScript doorScript;
     private MouseLook mouseLook;
     AiCustomerManager theAIManagaer;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class ScientistController : MonoBehaviour
         mouseLook = playerCam.GetComponent<MouseLook>();
         ui.SetActive(false);
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
+        
     }
 
     // Update is called once per frame
@@ -49,17 +52,28 @@ public class ScientistController : MonoBehaviour
 
         if (doneWithTask && correctAnswer)
         {
-            
-            scientist.SetDestination(scientistDoneDest.transform.position);
-            doorScript.OpenDoor();
-            answerGiven = true;
+            scientistAnimator.SetBool("correctAnswer", true);
+            if (!scientistAnimator.GetNextAnimatorStateInfo(0).IsName("Victory"))
+            {
+                //print("friendies");
+                scientist.SetDestination(scientistDoneDest.transform.position);
+                doorScript.OpenDoor();
+                answerGiven = true;
+            }
         }
 
-
-        if(answerGiven && !scientist.hasPath)
+        if(answerGiven && scientist.hasPath && scientist.remainingDistance < 0.01)
         {
+            print(scientist.remainingDistance);
+            atDestination = true;
+        }
+
+        if (atDestination)
+        {
+            doorScript.CloseDoor();
             theAIManagaer.NewAi();
         }
+
         if(scientist.velocity != Vector3.zero)
         {
             scientistAnimator.SetBool("isWalking", true);

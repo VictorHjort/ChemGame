@@ -349,4 +349,8 @@ public class AiCustomer : MonoBehaviour
             forTextField.text = Hint1;
         }
     }
+    public void setRequest()
+    {
+        forTextField.text = Request;
+    }
 }
