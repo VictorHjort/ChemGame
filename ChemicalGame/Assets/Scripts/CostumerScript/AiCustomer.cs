@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AiCustomer : MonoBehaviour
 {
+
+    //Variables for text transfer
+    public TMP_Text forTextField;
+    //public GameObject textField;
+    //private TMP_Text testText;
 
     public enum Dropdown
     {
@@ -29,6 +35,7 @@ public class AiCustomer : MonoBehaviour
     {
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
         CustommerTaskSet();
+        
     }
     // Update is called once per frame
     void Update()
@@ -41,7 +48,8 @@ public class AiCustomer : MonoBehaviour
         if (Tasks == Dropdown.Group)
         {
             CustommerTask = 0;
-            print(CustommerTask);
+            forTextField.text = Request; 
+
 
         }
         else if (Tasks == Dropdown.Period)
@@ -81,36 +89,30 @@ public class AiCustomer : MonoBehaviour
         if (CustommerTask == 0)
         {
             ReceiveObjectGroup(receivedObject);
-            print("what 1");
+
         }
         if (CustommerTask == 1)
         {
             ReceiveObjectPeriod(receivedObject);
-            print("what 2");
         }
 
         if (CustommerTask == 2)
         {
             ReceiveObjectGroupeAndPeriod(receivedObject);
-            print("what 3");
         }
         if (CustommerTask == 3)
         {
             ReceiveObjectGroupeAndPeriod(receivedObject);
-            print("what 4");
         }
         if (CustommerTask == 4)
         {
-            print("wha 5");
         }
         if (CustommerTask == 5)
         {
             ReceiveObjectAtomMass(receivedObject);
-            print("what 6");
         }
         if (CustommerTask == 6)
         {
-            print("what 7");
         }
     }
     /*
@@ -278,7 +280,7 @@ public class AiCustomer : MonoBehaviour
     }
     public void Correct()
     {
-        Debug.Log(Success);
+        forTextField.text = Success;
     }
 
     public void Wrong()
@@ -287,18 +289,21 @@ public class AiCustomer : MonoBehaviour
         {
             print(Fail); //fail dialog text
             //leaving and get new ai
+            forTextField.text = Fail;
         }
         if (Hint2Bool)
         {
             print(Hint2); //hint 2 text
             Hint2Bool = false;
             FailBool = true;
+            forTextField.text = Hint2;
         }
         if (Hint1Bool)
         {
             print(Hint1); //hint 1 text
             Hint1Bool = false;
             Hint2Bool = true;
+            forTextField.text = Hint1;
         }
     }
 }

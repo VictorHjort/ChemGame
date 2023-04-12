@@ -9,14 +9,16 @@ public class ScientistController : MonoBehaviour
     public Animator scientistAnimator;
     public GameObject scientistTargetDest, scientistDoneDest;
     public bool readyToWalk, doneWithTask, atDestination;
-    public GameObject doorObject, ui;
+    public GameObject doorObject, ui, playerCam;
     private DoorScript doorScript;
+    private MouseLook mouseLook;
 
     // Start is called before the first frame update
     void Start()
     {
         readyToWalk = true;
         doorScript = doorObject.GetComponent<DoorScript>();
+        mouseLook = playerCam.GetComponent<MouseLook>();
         ui.SetActive(false);
     }
 
@@ -27,8 +29,8 @@ public class ScientistController : MonoBehaviour
         {
             scientist.SetDestination(scientistTargetDest.transform.position);
             doorScript.OpenDoor();
-            print("im here");
             ui.SetActive(false);
+            mouseLook.taskMode = false;
         }
         if (scientist.hasPath)
         {
@@ -39,6 +41,7 @@ public class ScientistController : MonoBehaviour
 
             readyToWalk = false;
             doorScript.CloseDoor();
+            mouseLook.taskMode = true;
             ui.SetActive(true);
         }
 
