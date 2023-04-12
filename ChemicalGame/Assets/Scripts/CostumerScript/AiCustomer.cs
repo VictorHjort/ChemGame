@@ -10,6 +10,8 @@ public class AiCustomer : MonoBehaviour
     //Variables for modifying text
     public TMP_Text forTextField;
 
+    private ScientistController scientistController;
+
     public enum Dropdown
     {
         Group,
@@ -62,6 +64,7 @@ public class AiCustomer : MonoBehaviour
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
         CustommerTaskSet();
         forTextField.text = Request;
+        scientistController = GetComponent<ScientistController>();
     }
     // Update is called once per frame
     void Update()
@@ -321,6 +324,8 @@ public class AiCustomer : MonoBehaviour
     public void Correct()
     {
         forTextField.text = Success;
+        scientistController.correctAnswer = true;
+        scientistController.doneWithTask = true;
     }
 
     public void Wrong()
@@ -329,6 +334,7 @@ public class AiCustomer : MonoBehaviour
         {
             //leaving and get new ai
             forTextField.text = Failure;
+            
         }
         if (Hint2Bool)
         {

@@ -139,7 +139,7 @@ public class CharacterControlScript : MonoBehaviour
 
             //Now we're not going back anymore, we're back at the desk.
             goingBack = false;
-            theaimanager.Task(originalParent.transform.GetChild(0).gameObject);
+            theaimanager.Task(elements[bPickedElement].transform.parent.gameObject);
         }
     }
 }

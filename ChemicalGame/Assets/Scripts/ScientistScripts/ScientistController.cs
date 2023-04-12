@@ -45,8 +45,9 @@ public class ScientistController : MonoBehaviour
             ui.SetActive(true);
         }
 
-        if (doneWithTask)
+        if (doneWithTask && correctAnswer)
         {
+
             scientist.SetDestination(scientistDoneDest.transform.position);
             doorScript.OpenDoor();
         }
