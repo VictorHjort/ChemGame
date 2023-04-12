@@ -12,6 +12,7 @@ public class ScientistController : MonoBehaviour
     public GameObject doorObject, ui, playerCam;
     private DoorScript doorScript;
     private MouseLook mouseLook;
+    AiCustomerManager theAIManagaer;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class ScientistController : MonoBehaviour
         doorScript = doorObject.GetComponent<DoorScript>();
         mouseLook = playerCam.GetComponent<MouseLook>();
         ui.SetActive(false);
+        theAIManagaer = FindObjectOfType<AiCustomerManager>();
     }
 
     // Update is called once per frame
@@ -55,7 +57,7 @@ public class ScientistController : MonoBehaviour
 
         if(doneWithTask && !scientist.hasPath)
         {
-
+            theAIManagaer.NewAi();
         }
         if(scientist.velocity != Vector3.zero)
         {
