@@ -8,7 +8,7 @@ public class ScientistController : MonoBehaviour
     public NavMeshAgent scientist;
     public Animator scientistAnimator;
     public GameObject scientistTargetDest, scientistDoneDest;
-    public bool readyToWalk, doneWithTask, atDestination;
+    public bool readyToWalk, doneWithTask, atDestination, correctAnswer, answerGiven;
     public GameObject doorObject, ui, playerCam;
     private DoorScript doorScript;
     private MouseLook mouseLook;
