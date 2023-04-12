@@ -105,7 +105,6 @@ public class AiCustomer : MonoBehaviour
     }
     public void CustommerRecieved(GameObject receivedObject)
     {
-        print(receivedObject.GetComponent<Atom>().AtomName);
         if (CustommerTask == 0)
         {
             ReceiveObjectGroup(receivedObject);
