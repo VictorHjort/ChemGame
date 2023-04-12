@@ -9,7 +9,7 @@ public class ScientistController : MonoBehaviour
     public Animator scientistAnimator;
     public GameObject scientistTargetDest, scientistDoneDest;
     public bool readyToWalk, doneWithTask, atDestination;
-    public GameObject doorObject;
+    public GameObject doorObject, ui;
     private DoorScript doorScript;
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class ScientistController : MonoBehaviour
     {
         readyToWalk = true;
         doorScript = doorObject.GetComponent<DoorScript>();
-        
+        ui.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,6 +28,7 @@ public class ScientistController : MonoBehaviour
             scientist.SetDestination(scientistTargetDest.transform.position);
             doorScript.OpenDoor();
             print("im here");
+            ui.SetActive(false);
         }
         if (scientist.hasPath)
         {
@@ -38,6 +39,7 @@ public class ScientistController : MonoBehaviour
 
             readyToWalk = false;
             doorScript.CloseDoor();
+            ui.SetActive(true);
         }
 
         if (doneWithTask)
