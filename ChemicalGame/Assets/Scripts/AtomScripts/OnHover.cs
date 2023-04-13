@@ -7,6 +7,7 @@ public class OnHover : MonoBehaviour
     public Outline outline;
     public Camera cam;
     public bool isOver, isPicked, picking;
+    
 
     void Start()
     {
@@ -36,6 +37,8 @@ public class OnHover : MonoBehaviour
             outline.enabled = true;
         }
         isOver = true;
+        
+        
     }
 
     void OnMouseExit()
