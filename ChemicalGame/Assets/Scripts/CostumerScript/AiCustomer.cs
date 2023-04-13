@@ -73,6 +73,37 @@ public class AiCustomer : MonoBehaviour
     [System.NonSerialized] public AiCustomerManager theAIManagaer;
 
 
+
+    //            Code overview
+    // 
+    // public void Start()
+    //        void Update()
+    //            Sorting
+    // public void textStyleChoice()
+    // public void CustommerTaskSet()
+    // public void CustommerRecieved()
+    //             Functions to Check recieved object
+    // public void ReceiveObjectAtomNumber()
+    // public void ReceiveObjectAtomMass()
+    // public void ReceiveObjectGroup()
+    // public void ReceiveObjectPeriod()
+    // public void ReceiveObjectGroupeAndPeriod()
+    // public void ReceiveObjectFirstShell()
+    // public void ReceiveObjectSecondShell()
+    // public void ReceiveObjectThirdShell()
+    // public void ReceiveObjectFourthShell()
+    // public void ReceiveObjectFifthShell()
+    // public void ReceiveObjectSixthShell()
+    // public void ReceiveObjectSeventhShell()
+    // public void ReceiveObjectOuterShell()
+    //            Getting sending Changing bool strings etc.
+    // public void SetHint1Bool()
+    // public void SetFailBoool()
+    // public void Correct()
+    // public void Wrong()
+    // public void SetRequest()
+
+
     public void Start()
     {
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
@@ -375,6 +406,7 @@ public class AiCustomer : MonoBehaviour
         }
     }
 
+    //Dont know if we will use this, but it sets the current aicustomers Hint1Bool and FailBool to choosen : False/true
     public void SetHint1Bool(bool WhatState)
     {
         Hint1Bool = WhatState;
@@ -386,8 +418,9 @@ public class AiCustomer : MonoBehaviour
 
     /*
     * 
-    * Det her er functionerne der kører hvis svaret er rigtigt -
-    * Correct, eller forkert - Wrong.
+    * Det her er functionerne der kører hvis svaret er 
+    * rigtigt - Correct, 
+    * eller forkert - Wrong.
     * Hvis svaret er korrekt så køre funktionen Correct()
     * Hvis svaret derimod er forkert køre funktionen Wrong() 
     */
@@ -419,6 +452,8 @@ public class AiCustomer : MonoBehaviour
             forTextField.text = Hint1;
         }
     }
+
+    // This function set the text to be the request of the current AICustommer.
     public void setRequest()
     {
         forTextField.text = Request;

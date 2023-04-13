@@ -8,6 +8,15 @@ public class AiCustomerManager : MonoBehaviour
     public GameObject[] AiCustomerArray;
     private int AiCustomerIndex;
 
+    //            Code overview
+    // 
+    //        void Start()
+    //        void Update()
+    // public void Task()
+    // public void NewAi()
+    //
+    //               
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,25 +36,17 @@ public class AiCustomerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Hint1Bool == true)
-        {
-           // AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
-        }
-        else if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Hint2Bool == true)
-        {
-            //AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
-        }
-        else if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().FailBool == true)
-        {
-         //   AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
-            NewAi();
-            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().SetFailBool(false);
-        }
-
     }
+
+    //This is the function to give the current AI custommer the task
+    //the task is "is the recieved object the corrrect" the AICustomer then
+    //Checks the object and compare it.
     public void Task(GameObject receivedObject) { AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
 
     }
+
+    //This Set the current ai active and the other AICustomers objects to not active.
+
     public void NewAi() 
     {
             AiCustomerIndex++;
@@ -69,3 +70,18 @@ public class AiCustomerManager : MonoBehaviour
         
     }
 }
+/* if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Hint1Bool == true)
+        {
+           // AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
+        }
+        else if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Hint2Bool == true)
+        {
+            //AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
+        }
+        else if (Input.GetKeyDown(KeyCode.C) && AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().FailBool == true)
+        {
+         //   AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().Wrong();
+            NewAi();
+            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().SetFailBool(false);
+        }
+*/
