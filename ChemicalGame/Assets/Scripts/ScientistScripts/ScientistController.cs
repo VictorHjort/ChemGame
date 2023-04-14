@@ -84,53 +84,7 @@ public class ScientistController : MonoBehaviour
             scientistAnimator.SetBool("wrongAnswer", true);
             StartCoroutine(shiftAnimation());
             wrongAnswer = false;
-        }
-
-
-            //doorScript.OpenDoor();
-            //if (readyToWalk && atStart)
-            //{
-            //    mouseLook.taskMode = false;
-            //    ui.SetActive(false);
-            //}
-            //if (scientist.hasPath)
-            //{
-            //    readyToWalk = true;
-            //}
-            //if (!scientist.hasPath)
-            //{
-            //    readyToWalk = false;
-            //    doorScript.CloseDoor();
-            //    mouseLook.taskMode = true;
-            //    ui.SetActive(true);
-            //    atStart = false;
-            //}
-
-            //if (doneWithTask && correctAnswer)
-            //{
-            //    scientistAnimator.SetBool("correctAnswer", true);
-            //    if (!scientistAnimator.GetNextAnimatorStateInfo(0).IsName("Victory"))
-            //    {
-            //        //print("friendies");
-            //        scientist.SetDestination(scientistDoneDest.transform.position);
-            //        doorScript.OpenDoor();
-            //        answerGiven = true;
-            //    }
-            //}
-
-            //if(answerGiven && scientist.hasPath && scientist.remainingDistance < 0.01)
-            //{
-            //    print(scientist.remainingDistance);
-            //    atDestination = true;
-            //}
-
-            //if (atDestination)
-            //{
-
-            //    theAIManagaer.NewAi();
-            //    ui.SetActive(false);
-            //}
-        
+        }        
 
             if (scientist.velocity != Vector3.zero)
         {
@@ -145,6 +99,8 @@ public class ScientistController : MonoBehaviour
 
        
     }
+
+    //Couroutines needing a waitForSecond funciton
     private IEnumerator WalkOut()
     {
         //The couroutine for making the scientist walk out of the door after the animation.
