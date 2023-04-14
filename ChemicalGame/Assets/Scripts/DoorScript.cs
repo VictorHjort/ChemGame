@@ -12,44 +12,51 @@ public class DoorScript : MonoBehaviour
     public float leftDestination;
     public float rightCloseDestination;
     public float leftCloseDestination;
+    public bool open, close;
 
+    public void Update()
+    {
+        if (open)
+        {
+            OpenDoor();
+        }
+        if (close)
+        {
+            CloseDoor();
+        }
+    }
     public void OpenDoor()
-    {
-        Vector3 rightPos = rightDoor.transform.position;
-        if (rightPos.z <= rightDestination)
         {
-            rightPos.z += DoorSpeed * Time.deltaTime;
-        }
-        rightDoor.transform.position = rightPos;
+            Vector3 rightPos = rightDoor.transform.position;
+            if (rightPos.z <= rightDestination)
+            {
+                rightPos.z += DoorSpeed * Time.deltaTime;
+            }
+            rightDoor.transform.position = rightPos;
 
-        Vector3 leftPos = leftDoor.transform.position;
-        if (leftPos.z >= leftDestination)
+            Vector3 leftPos = leftDoor.transform.position;
+            if (leftPos.z >= leftDestination)
+            {
+                leftPos.z += -DoorSpeed * Time.deltaTime;
+            }
+            leftDoor.transform.position = leftPos;
+        }
+        public void CloseDoor()
         {
-            leftPos.z += -DoorSpeed * Time.deltaTime;
+            Vector3 rightPos = rightDoor.transform.position;
+            if (rightPos.z >= rightCloseDestination)
+            {
+                rightPos.z += -DoorSpeed * Time.deltaTime;
+            }
+            rightDoor.transform.position = rightPos;
+
+            Vector3 leftPos = leftDoor.transform.position;
+            if (leftPos.z <= leftCloseDestination)
+            {
+                leftPos.z += +DoorSpeed * Time.deltaTime;
+            }
+            leftDoor.transform.position = leftPos;        
         }
-        leftDoor.transform.position = leftPos;
-
-      
-
-    }
-    public void CloseDoor()
-    {
-        Vector3 rightPos = rightDoor.transform.position;
-        if (rightPos.z >= rightCloseDestination)
-        {
-            rightPos.z += -DoorSpeed * Time.deltaTime;
-        }
-        rightDoor.transform.position = rightPos;
-
-        Vector3 leftPos = leftDoor.transform.position;
-        if (leftPos.z <= leftCloseDestination)
-        {
-            leftPos.z += +DoorSpeed * Time.deltaTime;
-        }
-        leftDoor.transform.position = leftPos;
-
-        
-    }
 
    
 }
