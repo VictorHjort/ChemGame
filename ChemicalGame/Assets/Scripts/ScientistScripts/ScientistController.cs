@@ -1,4 +1,5 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +9,7 @@ public class ScientistController : MonoBehaviour
     public NavMeshAgent scientist;
     public Animator scientistAnimator;
     public GameObject scientistTargetDest, scientistDoneDest;
-    public bool readyToWalk, atDesk, atDestination, correctAnswer, answerGiven, atStart, doneWithTask, walking, leftStart;
+    public bool readyToWalk, atDesk, atFinalDestination, correctAnswer, wrongAnswer, atStart, doneWithTask, walking, leftStart;
     public GameObject doorObject, ui, playerCam;
     private DoorScript doorScript;
     private MouseLook mouseLook;
@@ -57,11 +58,35 @@ public class ScientistController : MonoBehaviour
             scientistAnimator.SetBool("correctAnswer", true);
             if (!scientistAnimator.GetNextAnimatorStateInfo(0).IsName("Victory"))
             {
-                doorScript.close = false;
-                doorScript.open = true;
-                scientist.SetDestination(scientistDoneDest.transform.position);
+                StartCoroutine(WalkOut());
+            }
+            if (atFinalDestination)
+            {
+                StartCoroutine(MakeNewAi());
             }
         }
+
+        if (doneWithTask)
+        {
+            scientistAnimator.SetBool("wrongAnswer", true);
+            if (!scientistAnimator.GetNextAnimatorStateInfo(0).IsName("wrongAnswer"))
+            {
+                StartCoroutine(WalkOut());
+            }
+            if (atFinalDestination)
+            {
+                StartCoroutine(MakeNewAi());
+            }
+        }
+
+        if(wrongAnswer)
+        {
+            scientistAnimator.SetBool("wrongAnswer", true);
+            StartCoroutine(shiftAnimation());
+            wrongAnswer = false;
+        }
+
+
             //doorScript.OpenDoor();
             //if (readyToWalk && atStart)
             //{
@@ -117,5 +142,29 @@ public class ScientistController : MonoBehaviour
             scientistAnimator.SetBool("isWalking", false);
             walking = false;
         }
+
+       
     }
+    private IEnumerator WalkOut()
+    {
+        //The couroutine for making the scientist walk out of the door after the animation.
+        yield return new WaitForSeconds(3);
+        doorScript.close = false;
+        doorScript.open = true;
+        scientist.SetDestination(scientistDoneDest.transform.position);
+        atFinalDestination = true;
+    }
+    
+    private IEnumerator MakeNewAi()
+    {
+        yield return new WaitForSeconds(2.5f);
+        theAIManagaer.NewAi();
+    }
+
+    private IEnumerator shiftAnimation()
+    {
+        yield return new WaitForSeconds(1);
+        scientistAnimator.SetBool("wrongAnswer", false);
+    }        
+
 }

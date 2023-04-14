@@ -428,7 +428,6 @@ public class AiCustomer : MonoBehaviour
     {
         forTextField.text = Success;
         scientistController.correctAnswer = true;
-        scientistController.doneWithTask = true;
     }
 
     public void Wrong()
@@ -437,6 +436,7 @@ public class AiCustomer : MonoBehaviour
         {
             //leaving and get new ai
             forTextField.text = Failure;
+            scientistController.doneWithTask = true;
             
         }
         if (Hint2Bool)
@@ -444,12 +444,14 @@ public class AiCustomer : MonoBehaviour
             Hint2Bool = false;
             FailBool = true;
             forTextField.text = Hint2;
+            scientistController.wrongAnswer = true;
         }
         if (Hint1Bool)
         {
             Hint1Bool = false;
             Hint2Bool = true;
             forTextField.text = Hint1;
+            scientistController.wrongAnswer = true;
         }
     }
 
