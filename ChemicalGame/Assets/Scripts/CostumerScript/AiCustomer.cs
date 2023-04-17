@@ -27,8 +27,10 @@ public class AiCustomer : MonoBehaviour
     public enum TextStyle
     {
         StringAtomnameStringGroupString,
+        StringAtomnameStringPeriodString,
         StringAtomnameStringAtomnumberString,
-        StringAtomnumberStringAtomnameString
+        StringAtomnumberStringAtomnameString, 
+        StringAtomnameStringAtomgroupStringAtomperiodString
     }
 
     [SerializeField] [Header("The AI's Task")] Dropdown Tasks;
@@ -48,11 +50,15 @@ public class AiCustomer : MonoBehaviour
     [TextArea(1, 20)]
     public string Hint1Part3;
     [TextArea(1, 20)]
+    public string Hint1Part4;
+    [TextArea(1, 20)]
     public string Hint2Part1;
     [TextArea(1, 20)]
     public string Hint2Part2;
     [TextArea(1, 20)]
     public string Hint2Part3;
+    [TextArea(1, 20)]
+    public string Hint2Part4;
 
     [Header("Group, Period & Group And Period")]
     public int RequestedGroup;
@@ -77,7 +83,7 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSeventhShell;
     
     [System.NonSerialized] public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
-    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber;
+    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod;
     [System.NonSerialized] public string Hint1, Hint2, AtomName;
     [System.NonSerialized] public AiCustomerManager theAIManagaer;
 
@@ -136,26 +142,34 @@ public class AiCustomer : MonoBehaviour
         AtomName = receivedObject.GetComponent<Atom>().AtomName;
         AtomGroup = receivedObject.GetComponent<Atom>().Group;
         AtomNumber = receivedObject.GetComponent<Atom>().AtomNumber;
+        AtomPeriod = receivedObject.GetComponent<Atom>().Period;
 
         if (TekstStyle == TextStyle.StringAtomnameStringGroupString)
         {
-            Hint1 = Hint1Part1  + AtomName + Hint1Part2 + AtomGroup + Hint1Part3;
-            Hint2 = Hint2Part1  + AtomName + Hint2Part2 + AtomGroup  + Hint2Part3;
-
+            Hint1 = Hint1Part1 + AtomName + Hint1Part2 + AtomGroup + Hint1Part3;
+            Hint2 = Hint2Part1 + AtomName + Hint2Part2 + AtomGroup + Hint2Part3;
+        }
+        if (TekstStyle == TextStyle.StringAtomnameStringPeriodString)
+        {
+            Hint1 = Hint1Part1 + AtomName + Hint1Part2 + AtomPeriod + Hint1Part3;
+            Hint2 = Hint2Part1 + AtomName + Hint2Part2 + AtomPeriod + Hint2Part3;
         }
         if (TekstStyle == TextStyle.StringAtomnameStringAtomnumberString)
         {
             Hint1 = Hint1Part1  + AtomName + Hint1Part2  + AtomNumber + Hint1Part3;
             Hint2 = Hint2Part1  + AtomName + Hint2Part2  + AtomNumber + Hint2Part3;
         }
-        if(TekstStyle == TextStyle.StringAtomnumberStringAtomnameString)
+        if (TekstStyle == TextStyle.StringAtomnumberStringAtomnameString)
         {
-            Hint1 = Hint1Part1  + AtomNumber + Hint1Part2  + AtomName  + Hint1Part3;
-            Hint2 = Hint2Part1  + AtomNumber + Hint2Part2  + AtomName  + Hint2Part3;
+            Hint1 = Hint1Part1 + AtomNumber + Hint1Part2 + AtomName + Hint1Part3;
+            Hint2 = Hint2Part1 + AtomNumber + Hint2Part2 + AtomName + Hint2Part3;
 
         }
-
-
+        if (TekstStyle == TextStyle.StringAtomnameStringAtomgroupStringAtomperiodString)
+        {
+            Hint1 = Hint1Part1 + AtomName + Hint1Part2 + AtomGroup + Hint1Part3 + AtomPeriod + Hint1Part4;
+            Hint2 = Hint2Part1 + AtomName + Hint2Part2 + AtomGroup + Hint2Part3 + AtomPeriod + Hint2Part4;
+        }
     }
 
 
@@ -315,11 +329,11 @@ public class AiCustomer : MonoBehaviour
         {
             Correct();
         }
-        if(receivedObject.GetComponent<Atom>().CheckGroup(RequestedGroup))
+        else  if(receivedObject.GetComponent<Atom>().CheckGroup(RequestedGroup))
         {
             Wrong();
         }
-        if(!receivedObject.GetComponent<Atom>().CheckPeriod(RequestedPeriod))
+        else if(!receivedObject.GetComponent<Atom>().CheckPeriod(RequestedPeriod))
         {
             Wrong();
         }
