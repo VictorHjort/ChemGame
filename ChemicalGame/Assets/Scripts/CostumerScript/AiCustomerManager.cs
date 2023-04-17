@@ -30,6 +30,7 @@ public class AiCustomerManager : MonoBehaviour
         if (AiCustomerArray.Length > 0)
         {
             AiCustomerArray[AiCustomerIndex].gameObject.SetActive(true);
+            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().setRequest();
         }
     }
 
@@ -56,6 +57,7 @@ public class AiCustomerManager : MonoBehaviour
             AiCustomerArray[AiCustomerIndex].gameObject.SetActive(true);
             AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().setRequest();
         }
+
             else
             {
                 AiCustomerArray[AiCustomerIndex - 1].gameObject.SetActive(false);
