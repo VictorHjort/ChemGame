@@ -33,16 +33,25 @@ public class AiCustomer : MonoBehaviour
 
     [SerializeField] [Header("The AI's Task")] Dropdown Tasks;
     [SerializeField] [Header("Dialog")]
+    [TextArea(5, 20)]
     public string Request;
+    [TextArea(5, 20)]
     public string Success;
+    [TextArea(5, 20)]
     public string Failure;
 
     [SerializeField] [Header("TekstDisplay (Husk MellemRum)")] TextStyle TekstStyle;
+    [TextArea(5, 20)]
     public string Hint1Part1;
+    [TextArea(5, 20)]
     public string Hint1Part2;
+    [TextArea(5, 20)]
     public string Hint1Part3;
+    [TextArea(5, 20)]
     public string Hint2Part1;
+    [TextArea(5, 20)]
     public string Hint2Part2;
+    [TextArea(5, 20)]
     public string Hint2Part3;
 
     [Header("Group, Period & Group And Period")]
@@ -104,11 +113,11 @@ public class AiCustomer : MonoBehaviour
     // public void SetRequest()
 
 
-    public void Start()
+    public void Awake()
     {
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
         CustommerTaskSet();
-        forTextField.text = Request;
+        forTextField.text = this.Request;
         scientistController = GetComponent<ScientistController>();
     }
     // Update is called once per frame
@@ -428,6 +437,7 @@ public class AiCustomer : MonoBehaviour
     {
         forTextField.text = Success;
         scientistController.correctAnswer = true;
+        scientistController.doneWithTask = true;
     }
 
     public void Wrong()
@@ -436,7 +446,6 @@ public class AiCustomer : MonoBehaviour
         {
             //leaving and get new ai
             forTextField.text = Failure;
-            scientistController.doneWithTask = true;
             
         }
         if (Hint2Bool)
@@ -444,14 +453,12 @@ public class AiCustomer : MonoBehaviour
             Hint2Bool = false;
             FailBool = true;
             forTextField.text = Hint2;
-            scientistController.wrongAnswer = true;
         }
         if (Hint1Bool)
         {
             Hint1Bool = false;
             Hint2Bool = true;
             forTextField.text = Hint1;
-            scientistController.wrongAnswer = true;
         }
     }
 
