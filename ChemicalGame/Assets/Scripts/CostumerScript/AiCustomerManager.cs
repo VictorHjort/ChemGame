@@ -55,7 +55,8 @@ public class AiCustomerManager : MonoBehaviour
             {
             AiCustomerArray[AiCustomerIndex - 1].gameObject.SetActive(false);
             AiCustomerArray[AiCustomerIndex].gameObject.SetActive(true);
-            }
+            AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().setRequest();
+        }
 
             else
             {
