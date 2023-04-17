@@ -33,25 +33,25 @@ public class AiCustomer : MonoBehaviour
 
     [SerializeField] [Header("The AI's Task")] Dropdown Tasks;
     [SerializeField] [Header("Dialog")]
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Request;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Success;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Failure;
 
     [SerializeField] [Header("TekstDisplay (Husk MellemRum)")] TextStyle TekstStyle;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Hint1Part1;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Hint1Part2;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Hint1Part3;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Hint2Part1;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Hint2Part2;
-    [TextArea(5, 20)]
+    [TextArea(1, 20)]
     public string Hint2Part3;
 
     [Header("Group, Period & Group And Period")]
