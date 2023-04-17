@@ -451,7 +451,6 @@ public class AiCustomer : MonoBehaviour
     {
         forTextField.text = Success;
         scientistController.correctAnswer = true;
-        scientistController.doneWithTask = true;
     }
 
     public void Wrong()
