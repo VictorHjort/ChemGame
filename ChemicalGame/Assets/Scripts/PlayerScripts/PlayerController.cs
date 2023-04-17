@@ -105,6 +105,7 @@ public class CharacterControlScript : MonoBehaviour
             //Setting destination back to desk
             player.SetDestination(deskDest.transform.position);
 
+            
             //Now the agent has picked and isPicking is set to false
             isPicking = false;
 
@@ -132,8 +133,11 @@ public class CharacterControlScript : MonoBehaviour
             {
                 onHover[i].picking = false;
             }
-
-            copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlaces[atomDeskNum].transform);
+            for (var i = atomDeskPlaces[4].transform.childCount - 1; i >= 0; i--)
+            {
+                Object.Destroy(atomDeskPlaces[4].transform.GetChild(i).gameObject);
+            }
+            copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlaces[4].transform);
             copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             atomDeskNum += 1;
             //Destroys all childs of the AtomHolder
