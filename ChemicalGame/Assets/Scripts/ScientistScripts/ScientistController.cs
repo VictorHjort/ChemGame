@@ -112,7 +112,7 @@ public class ScientistController : MonoBehaviour
     private IEnumerator WalkOut()
     {
         //The couroutine for making the scientist walk out of the door after the animation.
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(4.5f);
         doorScript.close = false;
         doorScript.open = true;
         scientist.SetDestination(scientistDoneDest.transform.position);
@@ -122,7 +122,7 @@ public class ScientistController : MonoBehaviour
     
     private IEnumerator MakeNewAi()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
         theAIManagaer.NewAi();
     }
 
