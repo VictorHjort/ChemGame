@@ -14,6 +14,9 @@ public class ScientistController : MonoBehaviour
     private DoorScript doorScript;
     private MouseLook mouseLook;
     AiCustomerManager theAIManagaer;
+    public GameObject lights;
+    private LightIntensity lightIntensity;
+    public bool redLights;
     
     
 
@@ -24,7 +27,12 @@ public class ScientistController : MonoBehaviour
         doorScript = doorObject.GetComponent<DoorScript>();
         mouseLook = playerCam.GetComponent<MouseLook>();
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
+        lightIntensity = lights.GetComponent<LightIntensity>();
         ui.SetActive(false);
+        if (redLights)
+        {
+            lightIntensity.lightRed = true;
+        }
     }
 
     // Update is called once per frame
@@ -109,6 +117,7 @@ public class ScientistController : MonoBehaviour
         doorScript.open = true;
         scientist.SetDestination(scientistDoneDest.transform.position);
         atFinalDestination = true;
+        lightIntensity.lightRed = false;
     }
     
     private IEnumerator MakeNewAi()
