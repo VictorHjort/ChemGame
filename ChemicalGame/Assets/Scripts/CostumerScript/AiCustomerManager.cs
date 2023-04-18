@@ -67,6 +67,7 @@ public class AiCustomerManager : MonoBehaviour
             //
             // Finished here the ending game should apear
             //
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("EndScene");
             print("the game Is Over ");
 

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using System.Runtime.InteropServices;
+using System.Drawing;
 
 public class MouseLook : MonoBehaviour
 {
@@ -22,7 +24,8 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
       if (taskMode) 
-       { 
+       {
+            
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
