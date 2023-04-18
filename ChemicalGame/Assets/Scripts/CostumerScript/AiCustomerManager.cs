@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AiCustomerManager : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class AiCustomerManager : MonoBehaviour
             //
             // Finished here the ending game should apear
             //
+            SceneManager.LoadScene("EndScene");
             print("the game Is Over ");
 
             }
