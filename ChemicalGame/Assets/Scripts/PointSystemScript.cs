@@ -5,25 +5,48 @@ using TMPro;
 
 public class PointSystemScript : MonoBehaviour
 {
-    public TMP_Text point;
-    public string PointsText;
-    private int fivePoints = 500;
-    //private int threePoints = 500;
-    //private int twoPoints = 500;
-    //private int onePoints = 500;
-  
-    void Start()
+    public TMP_Text pointText;
+    private int points = 0;
+    private int results;
+    private bool added500Points = false;
+    private bool added300Points = false;
+    private bool added200Points = false;
+    private bool added100Points = false;
+
+    // Public field for the AiCustomer object reference
+    public AiCustomer aiCustomerScript;
+
+    private void Update()
     {
-        point.text = PointsText;
+
+        results = aiCustomerScript.Results;
+
+        if (results == 0 && !added500Points)
+        {
+            AddPoints(500);
+            added500Points = true;
+        }
+        else if (results == 1 && !added300Points)
+        {
+            AddPoints(300);
+            added300Points = true;
+        }
+        else if (results == 2 && !added200Points)
+        {
+            AddPoints(200);
+            added200Points = true;
+        }
+        else if (results == 3 && !added100Points)
+        {
+            AddPoints(100);
+            added100Points = true;
+        }
     }
 
-    
 
-    public void AddFivePoints(int amount)
+    public void AddPoints(int amount)
     {
-        fivePoints += amount;
-        point.text = fivePoints.ToString();
-        //points += amount;
-        // pointText.text = "Points: " + points.ToString();
+        points += amount;
+        pointText.text = points.ToString();
     }
 }
