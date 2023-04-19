@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PointSystemScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TMP_Text point;
+    public string PointsText;
+    private int fivePoints = 500;
+    //private int threePoints = 500;
+    //private int twoPoints = 500;
+    //private int onePoints = 500;
+  
     void Start()
     {
-        
+        point.text = PointsText;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    public void AddFivePoints(int amount)
     {
-        
+        fivePoints += amount;
+        point.text = fivePoints.ToString();
+        //points += amount;
+        // pointText.text = "Points: " + points.ToString();
     }
 }
