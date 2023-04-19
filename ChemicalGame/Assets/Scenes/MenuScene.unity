@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 491929992}
   - component: {fileID: 491929991}
   - component: {fileID: 491929990}
+  - component: {fileID: 491929993}
   m_Layer: 5
   m_Name: NumTestPerson
   m_TagString: Untagged
@@ -689,23 +690,25 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: 1
+    - m_Text: Nr.
       m_Image: {fileID: 0}
-    - m_Text: 2
+    - m_Text: 01
       m_Image: {fileID: 0}
-    - m_Text: 3
+    - m_Text: 02
       m_Image: {fileID: 0}
-    - m_Text: 4
+    - m_Text: 03
       m_Image: {fileID: 0}
-    - m_Text: 5
+    - m_Text: 04
       m_Image: {fileID: 0}
-    - m_Text: 6
+    - m_Text: 05
       m_Image: {fileID: 0}
-    - m_Text: 7
+    - m_Text: 06
       m_Image: {fileID: 0}
-    - m_Text: 8
+    - m_Text: 07
       m_Image: {fileID: 0}
-    - m_Text: 9
+    - m_Text: 08
+      m_Image: {fileID: 0}
+    - m_Text: 09
       m_Image: {fileID: 0}
     - m_Text: 10
       m_Image: {fileID: 0}
@@ -811,6 +814,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491929988}
   m_CullTransparentMesh: 1
+--- !u!114 &491929993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491929988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd72ca6c82985f4383a0a4afe39446f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP_Dropdown: {fileID: 491929990}
 --- !u!1 &728391321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,7 +1696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: Nr.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1707,7 +1723,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.8
+  m_fontSize: 23.95
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1

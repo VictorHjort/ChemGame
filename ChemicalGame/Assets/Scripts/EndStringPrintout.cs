@@ -6,7 +6,13 @@ using System.IO;
 public class EndStringPrintout : MonoBehaviour
 {
     public string EndResulst;
+    public string fileName;
     // Start is called before the first frame update
+    public void Start()
+    {
+        string TestPersonNumber = PlayerPrefs.GetString("TestPersonNumber");
+        fileName = "Results of Testperson " + TestPersonNumber;
+    }
     public void PrintText()
     {
         
@@ -35,5 +41,7 @@ public class EndStringPrintout : MonoBehaviour
     public void AddToResultCode(int results)
     {
         EndResulst += results.ToString();
+        string TestPersonNumber = PlayerPrefs.GetString("TestPersonNumber");
+        fileName = "Results of Testperson " + TestPersonNumber;
     }
 }
