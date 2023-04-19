@@ -49,4 +49,6 @@ public class PointSystemScript : MonoBehaviour
         points += amount;
         pointText.text = points.ToString();
     }
+
+    
 }
