@@ -83,9 +83,10 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSeventhShell;
     
     [System.NonSerialized] public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
-    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod;
+    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod, Results;
     [System.NonSerialized] public string Hint1, Hint2, AtomName;
     [System.NonSerialized] public AiCustomerManager theAIManagaer;
+    [System.NonSerialized] public GameObject ResultManager;
 
 
 
@@ -125,6 +126,8 @@ public class AiCustomer : MonoBehaviour
         CustommerTaskSet();
         forTextField.text = this.Request;
         scientistController = GetComponent<ScientistController>();
+        Results = 0;
+        ResultManager = GameObject.Find("StoringResult");
     }
     // Update is called once per frame
     void Update()
@@ -455,19 +458,24 @@ public class AiCustomer : MonoBehaviour
     {
         forTextField.text = Success;
         scientistController.correctAnswer = true;
+        ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
+
     }
 
     public void Wrong()
     {
         if (FailBool)
         {
+            Results = 3;
             //leaving and get new ai
             forTextField.text = Failure;
             scientistController.doneWithTask = true;
-            
+            ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
+
         }
         if (Hint2Bool)
         {
+            Results = 2;
             Hint2Bool = false;
             FailBool = true;
             forTextField.text = Hint2;
@@ -475,6 +483,7 @@ public class AiCustomer : MonoBehaviour
         }
         if (Hint1Bool)
         {
+            Results = 1;
             Hint1Bool = false;
             Hint2Bool = true;
             forTextField.text = Hint1;
