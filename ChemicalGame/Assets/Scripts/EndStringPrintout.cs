@@ -10,14 +10,12 @@ public class EndStringPrintout : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        string TestPersonNumber = PlayerPrefs.GetString("TestPersonNumber");
-        fileName = "Results of Testperson " + TestPersonNumber;
     }
     public void PrintText()
     {
         
         string TestPersonNumber = PlayerPrefs.GetString("TestPersonNumber");
-        string fileName = "Results of Testperson "+ TestPersonNumber;
+        string fileName = "Testperson "+ TestPersonNumber;
         string fileExtension = ".txt";
         string folderPath = Application.dataPath + "/Results/";
         string filePath = folderPath + "/" + fileName + fileExtension;
@@ -37,11 +35,11 @@ public class EndStringPrintout : MonoBehaviour
         }
 
         File.WriteAllText(filePath, EndResulst);
+
+
     }
     public void AddToResultCode(int results)
     {
         EndResulst += results.ToString();
-        string TestPersonNumber = PlayerPrefs.GetString("TestPersonNumber");
-        fileName = "Results of Testperson " + TestPersonNumber;
     }
 }
