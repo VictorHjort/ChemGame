@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 10782
+  controlID: 11084
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 10783
+  controlID: 11085
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 10665
+  controlID: 11054
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 10666
+  controlID: 11055
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -739,8 +739,8 @@ MonoBehaviour:
     y: 0
     width: 669
     height: 534
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 10}
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000166a0000d66b0000140001001a3a0e00b036010044390100bcc00700261c0300221c03006a17050000000000625a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -971,8 +971,8 @@ MonoBehaviour:
     y: 0
     width: 482
     height: 939
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 14}
@@ -1122,10 +1122,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 31}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f03affffd43effff9c49ffff7a70ffffc678ffffa486fffff686ffff5c88ffff6a88ffff529bffff6c9bffff52b2ffffccbdffff1ebeffffa0bfffffaebfffff96d2ffffb0d2ffff00fbffff3c5001003408020032730200fe7302001c76020086790200528102008a810200be840200a88e02004e8f0200a08f0200a2920200329502009e9702009a990200d69e02009ca30200
+      m_ExpandedIDs: 3850fefff03affffd43effff9c49ffff7a70ffffc678ffffa486fffff686ffff5c88ffff6a88ffff529bffff6c9bffff52b2ffffccbdffff1ebeffffa0bfffffaebfffff96d2ffffb0d2ffff00fbffff3c5001003408020032730200fe7302001c76020086790200528102008a810200be840200a88e02004e8f0200a08f0200a2920200329502009e9702009a990200d69e02009ca30200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
