@@ -337,6 +337,10 @@ public class AiCustomer : MonoBehaviour
         {
             Wrong();
         }
+        else
+        {
+            Wrong();
+        }
     }
     public void ReceiveObjectFirstShell(GameObject receivedObject)
     {
