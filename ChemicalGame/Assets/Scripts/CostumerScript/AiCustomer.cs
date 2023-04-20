@@ -83,7 +83,8 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSeventhShell;
     
     [System.NonSerialized] public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
-    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod, Results;
+    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod;
+    public int Results;
     [System.NonSerialized] public string Hint1, Hint2, AtomName;
     [System.NonSerialized] public AiCustomerManager theAIManagaer;
     [System.NonSerialized] public GameObject ResultManager;
