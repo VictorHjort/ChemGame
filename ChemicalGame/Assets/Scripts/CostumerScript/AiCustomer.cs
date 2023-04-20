@@ -83,11 +83,12 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSeventhShell;
     
     [System.NonSerialized] public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
-    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod;
-    public int Results;
+    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod, Results;
     [System.NonSerialized] public string Hint1, Hint2, AtomName;
     [System.NonSerialized] public AiCustomerManager theAIManagaer;
     [System.NonSerialized] public GameObject ResultManager;
+    [System.NonSerialized] public PointSystemScript points;
+
 
 
 
@@ -127,8 +128,10 @@ public class AiCustomer : MonoBehaviour
         CustommerTaskSet();
         forTextField.text = this.Request;
         scientistController = GetComponent<ScientistController>();
+        points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");
+
     }
     // Update is called once per frame
     void Update()
@@ -460,6 +463,7 @@ public class AiCustomer : MonoBehaviour
         forTextField.text = Success;
         scientistController.correctAnswer = true;
         ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
+        points.PointsAdded(Results);
 
     }
 
@@ -472,6 +476,7 @@ public class AiCustomer : MonoBehaviour
             forTextField.text = Failure;
             scientistController.doneWithTask = true;
             ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
+            points.PointsAdded(Results);
 
         }
         if (Hint2Bool)

@@ -7,39 +7,26 @@ public class PointSystemScript : MonoBehaviour
 {
     public TMP_Text pointText;
     private int points = 0;
-    private int results;
-    private bool added500Points = false;
-    private bool added300Points = false;
-    private bool added200Points = false;
-    private bool added100Points = false;
 
-    // Public field for the AiCustomer object reference
-    public AiCustomer aiCustomerScript;
-
-    private void Update()
+    public void PointsAdded(int recivedInt)
     {
 
-        results = aiCustomerScript.Results;
 
-        if (results == 0 && !added500Points)
+        if (recivedInt == 0)
         {
             AddPoints(500);
-            added500Points = true;
         }
-        else if (results == 1 && !added300Points)
+        else if (recivedInt == 1)
         {
             AddPoints(300);
-            added300Points = true;
         }
-        else if (results == 2 && !added200Points)
+        else if (recivedInt == 2)
         {
             AddPoints(200);
-            added200Points = true;
         }
-        else if (results == 3 && !added100Points)
+        else if (recivedInt == 3)
         {
             AddPoints(100);
-            added100Points = true;
         }
     }
 
