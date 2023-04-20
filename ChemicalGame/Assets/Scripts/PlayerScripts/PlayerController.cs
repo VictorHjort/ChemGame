@@ -9,9 +9,9 @@ public class CharacterControlScript : MonoBehaviour
     public GameObject targetDest, deskDest, guy;
     private bool isPicking, isOn, goingBack = false;
     public GameObject[] elements, atomDeskPlaces;
-    private OnHover[] onHover = new OnHover[91];
+    private OnHover[] onHover = new OnHover[90];
     private int pickedElement, bPickedElement, atomDeskNum;
-    public GameObject atomHolder, originalParent,yesButton;
+    public GameObject atomHolder, originalParent;
     private GameObject copiedObject;
     AiCustomerManager theaimanager;
 
@@ -21,15 +21,9 @@ public class CharacterControlScript : MonoBehaviour
         for (int i = 0; i < onHover.Length; i++)
         {
             
-            if(i == 90)
-            {
-                onHover[i] = yesButton.GetComponent<OnHover>();
-            }
-            else 
-            { 
-                //onHover[i] = elements[i].GetComponent<OnHover>();
-                onHover[i] = elements[i].GetComponent<OnHover>();   
-            }
+            //onHover[i] = elements[i].GetComponent<OnHover>();
+            onHover[i] = elements[i].GetComponent<OnHover>();   
+            
         }
         atomDeskNum = 0;
         theaimanager = FindObjectOfType<AiCustomerManager>();
@@ -155,4 +149,15 @@ public class CharacterControlScript : MonoBehaviour
             theaimanager.Task(elements[bPickedElement].transform.parent.gameObject);
         }
     }
+
+
+    public void oneAtomControls()
+    {
+
+    }
+    public void alkaliControls()
+    {
+
+    }
+
 }
