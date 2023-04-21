@@ -12,6 +12,9 @@ public class AiCustomer : MonoBehaviour
     public TMP_Text forTextField;
 
     private ScientistController scientistController;
+    PlayerController playerController;
+    
+    
 
 
     public enum Dropdown
@@ -125,6 +128,7 @@ public class AiCustomer : MonoBehaviour
         CustommerTaskSet();
         forTextField.text = this.Request;
         scientistController = GetComponent<ScientistController>();
+        playerController = GetComponent<PlayerController>();
     }
     // Update is called once per frame
     void Update()
@@ -192,24 +196,22 @@ public class AiCustomer : MonoBehaviour
         if (Tasks == Dropdown.Group)
         {
             CustommerTask = 0;
-            
-
+            playerController.oneAtomTask = true;
         }
         else if (Tasks == Dropdown.Period)
         {
             CustommerTask = 1;
-            
+            playerController.oneAtomTask = true;
         }
         else if (Tasks == Dropdown.GroupAndPeriod)
         {
             CustommerTask = 2;
-            
+            playerController.oneAtomTask = true;
         }
         else if (Tasks == Dropdown.AkaliMetaler)
         {
             CustommerTask = 3;
-            
-
+            playerController.multipleAtomTask = true;
         }
         else if (Tasks == Dropdown.AtomOpbygning)
         {
