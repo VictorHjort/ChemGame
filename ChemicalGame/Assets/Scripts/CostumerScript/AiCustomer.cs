@@ -86,9 +86,12 @@ public class AiCustomer : MonoBehaviour
     public int RequestedSeventhShell;
     
     [System.NonSerialized] public bool Hint1Bool = true, Hint2Bool = false, FailBool = false, TaskCompleted = false;
-    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod;
+    [System.NonSerialized] private int CustommerTask, AtomGroup, AtomNumber, AtomPeriod, Results;
     [System.NonSerialized] public string Hint1, Hint2, AtomName;
     [System.NonSerialized] public AiCustomerManager theAIManagaer;
+    [System.NonSerialized] public GameObject ResultManager;
+    [System.NonSerialized] public PointSystemScript points;
+
 
 
 
@@ -129,6 +132,10 @@ public class AiCustomer : MonoBehaviour
         forTextField.text = this.Request;
         scientistController = GetComponent<ScientistController>();
         playerController = GetComponent<PlayerController>();
+        points = GameObject.Find("Points").GetComponent<PointSystemScript>();
+        Results = 0;
+        ResultManager = GameObject.Find("StoringResult");
+
     }
     // Update is called once per frame
     void Update()
@@ -138,7 +145,7 @@ public class AiCustomer : MonoBehaviour
 
 
     /*
-     * Her bliver Hint 1 og Hint 2's format lavet, altså ex. string + atomname + string + atomnumber + string 
+     * Her bliver Hint 1 og Hint 2's format lavet, altsï¿½ ex. string + atomname + string + atomnumber + string 
      * 
      */
     public void textStyleChoice(GameObject receivedObject)
@@ -230,9 +237,9 @@ public class AiCustomer : MonoBehaviour
         }
     }
     /*
-     * Her bliver løsningen valgt udfra hvad man vælger Group,Period,GroupAndPeriod ETC.
+     * Her bliver lï¿½sningen valgt udfra hvad man vï¿½lger Group,Period,GroupAndPeriod ETC.
      * det bliver valgt ud fra int CustommerTask, I drop down Menu er Group = 0 Period = 1 osv.
-     * så fra top til bunden, går det fra 0 til 6 (atm)
+     * sï¿½ fra top til bunden, gï¿½r det fra 0 til 6 (atm)
      * se listen ovenover.
      * 
      */
@@ -274,11 +281,11 @@ public class AiCustomer : MonoBehaviour
     
     
     /*
-     * Disse Functioner checker om det gældende krav er Correct i Atommerne.
-     * den tilgår det object der valgt "receivedObject" og tilgår dens script 
+     * Disse Functioner checker om det gï¿½ldende krav er Correct i Atommerne.
+     * den tilgï¿½r det object der valgt "receivedObject" og tilgï¿½r dens script 
      * "Atom" i den er der functioner der checker om det er Correct og sender 
-     * en bool tilbage der enten er true eller false hvis den er true så køre
-     * functionen Correct() som er længere oppe i teksten.
+     * en bool tilbage der enten er true eller false hvis den er true sï¿½ kï¿½re
+     * functionen Correct() som er lï¿½ngere oppe i teksten.
      */
 
     public void ReceiveObjectAtomNumber(GameObject receivedObject)
@@ -447,29 +454,36 @@ public class AiCustomer : MonoBehaviour
 
     /*
     * 
-    * Det her er functionerne der kører hvis svaret er 
+    * Det her er functionerne der kï¿½rer hvis svaret er 
     * rigtigt - Correct, 
     * eller forkert - Wrong.
-    * Hvis svaret er korrekt så køre funktionen Correct()
-    * Hvis svaret derimod er forkert køre funktionen Wrong() 
+    * Hvis svaret er korrekt sï¿½ kï¿½re funktionen Correct()
+    * Hvis svaret derimod er forkert kï¿½re funktionen Wrong() 
     */
     public void Correct()
     {
         forTextField.text = Success;
         scientistController.correctAnswer = true;
+        ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
+        points.PointsAdded(Results);
+
     }
 
     public void Wrong()
     {
         if (FailBool)
         {
+            Results = 3;
             //leaving and get new ai
             forTextField.text = Failure;
             scientistController.doneWithTask = true;
-            
+            ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
+            points.PointsAdded(Results);
+
         }
         if (Hint2Bool)
         {
+            Results = 2;
             Hint2Bool = false;
             FailBool = true;
             forTextField.text = Hint2;
@@ -477,6 +491,7 @@ public class AiCustomer : MonoBehaviour
         }
         if (Hint1Bool)
         {
+            Results = 1;
             Hint1Bool = false;
             Hint2Bool = true;
             forTextField.text = Hint1;

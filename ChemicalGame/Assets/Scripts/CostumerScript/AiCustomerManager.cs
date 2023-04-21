@@ -8,6 +8,9 @@ public class AiCustomerManager : MonoBehaviour
 
     public GameObject[] AiCustomerArray;
     private int AiCustomerIndex;
+    [System.NonSerialized] public GameObject ResultManager;
+    [System.NonSerialized] public PointSystemScript points;
+    [System.NonSerialized] public int PointResult;
 
     //            Code overview
     // 
@@ -22,7 +25,7 @@ public class AiCustomerManager : MonoBehaviour
     void Start()
     {
         AiCustomerIndex = 0;
-
+        ResultManager = GameObject.Find("StoringResult");
 
         for (int i = 1; i < AiCustomerArray.Length; i++)
         {
@@ -68,9 +71,12 @@ public class AiCustomerManager : MonoBehaviour
             // Finished here the ending game should apear
             //
             Cursor.lockState = CursorLockMode.None;
+            ResultManager.GetComponent<EndStringPrintout>().PrintText();
+            points = GameObject.Find("Points").GetComponent<PointSystemScript>();
+            PointResult = points.GetResult();
             SceneManager.LoadScene("EndScene");
             print("the game Is Over ");
-
+            PlayerPrefs.SetInt("Results",PointResult);
             }
         
     }
