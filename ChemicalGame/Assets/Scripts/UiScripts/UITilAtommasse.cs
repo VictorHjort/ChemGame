@@ -28,6 +28,7 @@ public class UITilAtommasse : MonoBehaviour
         if(isActive && Input.GetKeyDown(KeyCode.Return)||Input.GetKey(KeyCode.Escape))
         {
             Awnser = FieldInput.text.ToString();
+            print(Awnser);
             FieldInput.text = "";
             isActive = false;
 
@@ -174,3 +175,21 @@ public class UITilAtommasse : MonoBehaviour
         }
         else { return false;}
     */
+
+
+/*
+    public void CustommerRecievedString(string AwnserString)
+    {
+        if (CustommerTask == 5)
+        {
+            ReceiveStringAtomMass(AwnserString);
+
+        }
+    }
+    public void ReceiveStringAtomMass(string recievedAwnser)
+    {
+        string wantedmass = RequestedAtomMass.ToString().replace(",",".");
+
+
+    }
+*/
