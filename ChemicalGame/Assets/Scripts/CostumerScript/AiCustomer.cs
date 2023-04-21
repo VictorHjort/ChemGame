@@ -12,6 +12,7 @@ public class AiCustomer : MonoBehaviour
     public TMP_Text forTextField;
 
     private ScientistController scientistController;
+    public GameObject playerC;
     PlayerController playerController;
     
     
@@ -128,10 +129,10 @@ public class AiCustomer : MonoBehaviour
     public void Awake()
     {
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
+        playerController = playerC.GetComponent<PlayerController>();
         CustommerTaskSet();
         forTextField.text = this.Request;
         scientistController = GetComponent<ScientistController>();
-        playerController = GetComponent<PlayerController>();
         points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");

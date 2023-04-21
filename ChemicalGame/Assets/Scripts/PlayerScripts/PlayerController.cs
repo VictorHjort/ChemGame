@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     //The camera from where the press will be seen
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public NavMeshAgent player;
     public Animator playerAnimator;
     public GameObject targetDest, deskDest, guy;
-    private bool isPicking, isOn, goingBack = false;
+    private bool isPicking, isOn, goingBack, okPressed;
     public GameObject[] elements, atomDeskPlaces;
     private OnHover[] onHover = new OnHover[90];
     private int pickedElement, bPickedElement, atomDeskNum;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private GameObject copiedObject;
     AiCustomerManager theaimanager;
     public bool oneAtomTask, multipleAtomTask, typingTask;
+    private List<int> atomElemIndex = new List<int>();
 
     private void Start()
     {
@@ -138,22 +140,24 @@ public class PlayerController : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitPoint;
-
-        if (Physics.Raycast(ray, out hitPoint))
+        if (!okPressed)
         {
-            for (int i = 0; i < onHover.Length; i++)
+            if (Physics.Raycast(ray, out hitPoint))
             {
-                //Setting all atom boxes as not picked and outline enabled false
-                onHover[i].outline.enabled = false;
-                onHover[i].isPicked = false;
-                onHover[i].picking = true;
+                for (int i = 0; i < onHover.Length; i++)
+                {
+                    //Setting all atom boxes as not picked and outline enabled false
+                    onHover[i].outline.enabled = false;
+                    onHover[i].isPicked = false;
+                    onHover[i].picking = true;
+                }
+                //Setting the chosen atom elements as isPicked true.
+                onHover[pickedElement].isPicked = true;
+
+                //Saving the index of the picked atom elements
+                bPickedElement = pickedElement;
+
             }
-            //Setting the chosen atom elements as isPicked true.
-            onHover[pickedElement].isPicked = true;
-
-            //Saving the index of the picked atom elements
-            bPickedElement = pickedElement;
-
         }
     }
     public void oneAtomPickControls()
