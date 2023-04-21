@@ -9,6 +9,9 @@ public class AiCustomerManager : MonoBehaviour
     public GameObject[] AiCustomerArray;
     private int AiCustomerIndex;
     [System.NonSerialized] public GameObject ResultManager;
+    [System.NonSerialized] public PointSystemScript points;
+    [System.NonSerialized] public int PointResult;
+
     //            Code overview
     // 
     //        void Start()
@@ -69,9 +72,11 @@ public class AiCustomerManager : MonoBehaviour
             //
             Cursor.lockState = CursorLockMode.None;
             ResultManager.GetComponent<EndStringPrintout>().PrintText();
+            points = GameObject.Find("Points").GetComponent<PointSystemScript>();
+            PointResult = points.GetResult();
             SceneManager.LoadScene("EndScene");
             print("the game Is Over ");
-
+            PlayerPrefs.SetInt("Results",PointResult);
             }
         
     }
