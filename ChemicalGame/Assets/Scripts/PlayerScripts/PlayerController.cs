@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     AiCustomerManager theaimanager;
     public bool oneAtomTask, multipleAtomTask, typingTask;
     private List<int> atomElemIndex = new List<int>();
+    RaycastHit point;
 
     private void Start()
     {
@@ -64,6 +65,14 @@ public class PlayerController : MonoBehaviour
             {
                 multipleAtomChooseControls();
             }
+        }
+        else if (Input.GetKeyDown("space"))
+        {
+            //Setting the destination of the agent to the click position 
+            targetDest.transform.position = point.point;
+            player.SetDestination(point.point);
+            //Setting animtaion to run when the agent is going towards an atom element
+            playerAnimator.SetTrigger("run");
         }
         //Check if path is created 
         if (player.hasPath && !isPicking)
@@ -146,18 +155,19 @@ public class PlayerController : MonoBehaviour
             {
                 for (int i = 0; i < onHover.Length; i++)
                 {
-                    //Setting all atom boxes as not picked and outline enabled false
-                    onHover[i].outline.enabled = false;
-                    onHover[i].isPicked = false;
-                    onHover[i].picking = true;
+                    if (!atomElemIndex.Contains(i))
+                    {
+                        //Setting all atom boxes as not picked and outline enabled false
+                        onHover[i].outline.enabled = false;
+                        onHover[i].isPicked = false;
+                    }
                 }
                 //Setting the chosen atom elements as isPicked true.
                 onHover[pickedElement].isPicked = true;
-
+                point = hitPoint;
                 //Saving the index of the picked atom elements
-                bPickedElement = pickedElement;
-
-            }
+                atomElemIndex.Add(pickedElement);
+            }           
         }
     }
     public void oneAtomPickControls()
