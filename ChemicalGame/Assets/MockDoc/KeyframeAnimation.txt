@@ -1,0 +1,11 @@
+idle001 1-60
+idle002 1-100
+idle003 1-100
+punch 1-30
+kick001 1-30
+kick002 1-30
+hit 1-20
+Jump (up 1-20)(Air[loop] 20-35)(Down35-50)
+Death 1-30
+Walk 1-24
+Run 1-19

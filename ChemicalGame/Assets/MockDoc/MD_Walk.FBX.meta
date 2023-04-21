@@ -1,0 +1,213 @@
+fileFormatVersion: 2
+guid: a86e44d04076f624db72754bcd567a21
+timeCreated: 1470129836
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bigger_unfold3d:ML_Head
+    100002: Body
+    100004: CATRigHub001
+    100006: CATRigHub001Bone001
+    100008: CATRigHub001Bone001Bone001
+    100010: CATRigHub001Bone001Bone002
+    100012: CATRigHub001Bone001Bone003
+    100014: CATRigHub001Bone001Bone004
+    100016: CATRigHub001Bone001Bone005
+    100018: CATRigHub001Bone001Bone006
+    100020: CATRigHub001Bone002
+    100022: CATRigHub001Bone003
+    100024: CATRigHub001Bone004
+    100026: CATRigHub001Bone005
+    100028: CATRigHub001Bone006
+    100030: CATRigHub002
+    100032: CATRigHub003
+    100034: CATRigLArm1
+    100036: CATRigLArm2
+    100038: CATRigLArmCollarbone
+    100040: CATRigLArmDigit11
+    100042: CATRigLArmDigit12
+    100044: CATRigLArmDigit21
+    100046: CATRigLArmDigit22
+    100048: CATRigLArmDigit31
+    100050: CATRigLArmDigit32
+    100052: CATRigLArmDigit41
+    100054: CATRigLArmDigit42
+    100056: CATRigLArmDigit51
+    100058: CATRigLArmDigit52
+    100060: CATRigLArmPalm
+    100062: CATRigLLeg1
+    100064: CATRigLLeg2
+    100066: CATRigLLegAnkle
+    100068: CATRigLLegDigit11
+    100070: CATRigLLegPlatform
+    100072: CATRigRArm1
+    100074: CATRigRArm2
+    100076: CATRigRArmCollarbone
+    100078: CATRigRArmDigit11
+    100080: CATRigRArmDigit12
+    100082: CATRigRArmDigit21
+    100084: CATRigRArmDigit22
+    100086: CATRigRArmDigit31
+    100088: CATRigRArmDigit32
+    100090: CATRigRArmDigit41
+    100092: CATRigRArmDigit42
+    100094: CATRigRArmDigit51
+    100096: CATRigRArmDigit52
+    100098: CATRigRArmPalm
+    100100: CATRigRLeg1
+    100102: CATRigRLeg2
+    100104: CATRigRLegAnkle
+    100106: CATRigRLegDigit11
+    100108: CATRigRLegPlatform
+    100110: CATRigSpine
+    100112: CATRigSpine1
+    100114: CATRigSpine2
+    100116: Character001
+    100118: Ground
+    100120: Head
+    100122: //RootNode
+    100124: polySurface1
+    100126: transform1
+    100128: transform2
+    100130: transform3
+    100132: transform4
+    400000: Bigger_unfold3d:ML_Head
+    400002: Body
+    400004: CATRigHub001
+    400006: CATRigHub001Bone001
+    400008: CATRigHub001Bone001Bone001
+    400010: CATRigHub001Bone001Bone002
+    400012: CATRigHub001Bone001Bone003
+    400014: CATRigHub001Bone001Bone004
+    400016: CATRigHub001Bone001Bone005
+    400018: CATRigHub001Bone001Bone006
+    400020: CATRigHub001Bone002
+    400022: CATRigHub001Bone003
+    400024: CATRigHub001Bone004
+    400026: CATRigHub001Bone005
+    400028: CATRigHub001Bone006
+    400030: CATRigHub002
+    400032: CATRigHub003
+    400034: CATRigLArm1
+    400036: CATRigLArm2
+    400038: CATRigLArmCollarbone
+    400040: CATRigLArmDigit11
+    400042: CATRigLArmDigit12
+    400044: CATRigLArmDigit21
+    400046: CATRigLArmDigit22
+    400048: CATRigLArmDigit31
+    400050: CATRigLArmDigit32
+    400052: CATRigLArmDigit41
+    400054: CATRigLArmDigit42
+    400056: CATRigLArmDigit51
+    400058: CATRigLArmDigit52
+    400060: CATRigLArmPalm
+    400062: CATRigLLeg1
+    400064: CATRigLLeg2
+    400066: CATRigLLegAnkle
+    400068: CATRigLLegDigit11
+    400070: CATRigLLegPlatform
+    400072: CATRigRArm1
+    400074: CATRigRArm2
+    400076: CATRigRArmCollarbone
+    400078: CATRigRArmDigit11
+    400080: CATRigRArmDigit12
+    400082: CATRigRArmDigit21
+    400084: CATRigRArmDigit22
+    400086: CATRigRArmDigit31
+    400088: CATRigRArmDigit32
+    400090: CATRigRArmDigit41
+    400092: CATRigRArmDigit42
+    400094: CATRigRArmDigit51
+    400096: CATRigRArmDigit52
+    400098: CATRigRArmPalm
+    400100: CATRigRLeg1
+    400102: CATRigRLeg2
+    400104: CATRigRLegAnkle
+    400106: CATRigRLegDigit11
+    400108: CATRigRLegPlatform
+    400110: CATRigSpine
+    400112: CATRigSpine1
+    400114: CATRigSpine2
+    400116: Character001
+    400118: Ground
+    400120: Head
+    400122: //RootNode
+    400124: polySurface1
+    400126: transform1
+    400128: transform2
+    400130: transform3
+    400132: transform4
+    4300000: Body
+    4300002: Ground
+    4300004: Head
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Body
+    13700002: Ground
+    13700004: Head
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
