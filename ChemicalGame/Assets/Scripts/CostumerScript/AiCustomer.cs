@@ -479,7 +479,8 @@ public class AiCustomer : MonoBehaviour
             scientistController.doneWithTask = true;
             ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
             points.PointsAdded(Results);
-
+            playerController.oneAtomTask = false;
+            playerController.multipleAtomTask = false;
         }
         if (Hint2Bool)
         {
