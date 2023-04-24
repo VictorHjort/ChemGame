@@ -18,7 +18,7 @@ public class AiCustomer : MonoBehaviour
     
     
 
-
+    // enum that changes how the task is procced
     public enum Dropdown
     {
         Group,
@@ -29,6 +29,7 @@ public class AiCustomer : MonoBehaviour
         AtomMasse,
         EllektronerIYdersteSkald
     }
+    //Text styling, how the format should be.
     public enum TextStyle
     {
         StringAtomnameStringGroupString,
@@ -264,59 +265,63 @@ public class AiCustomer : MonoBehaviour
         }
         if (CustommerTask == 3)
         {
-            ReceiveObjectGroupeAndPeriod(receivedObject);
+            // public void CustommerRecievedMulti(GameObject[] receivedObject)
+            // is used mostly if not it will check
+            ReceiveObjectAkaliMetal(receivedObject);
         }
         if (CustommerTask == 4)
         {
-
+            // public void CustommerRecieved(int receivedAtomMass)
+            // is used instead
         }
         if (CustommerTask == 5)
         {
-            ReceiveObjectAtomMass(receivedObject);
+            
         }
         if (CustommerTask == 6)
         {
             ReceiveObjectOuterShell(receivedObject);
         }
     }
-
-    public void CustommerRecievedMulti(GameObject[] receivedObject)
+    public void CustommerRecieved(string receivedAtomMass)
     {
-        Akalibool = new bool[receivedObject.Length];
-        print("hello");
-        for (int i = 0; i < receivedObject.Length;i++) {
-            if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
-            {
-                Akalibool[i] = true;
-            }
-            if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
-            {
-                Akalibool[i] = false;
-            }
-        }
-        if (Akalibool.All(b => b))
+        if (CustommerTask == 5)
         {
-            Correct();
+            ReceiveObjectAtomMass(receivedAtomMass);
         }
-        else if (Akalibool.All(b => !b))
+    }
+
+        public void CustommerRecievedMulti(GameObject[] receivedObject)
+    {
+        if (CustommerTask == 3)
         {
-            Wrong();
+            Akalibool = new bool[receivedObject.Length];
+            print("hello");
+            for (int i = 0; i < receivedObject.Length; i++)
+            {
+                if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+                {
+                    Akalibool[i] = true;
+                }
+                if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+                {
+                    Akalibool[i] = false;
+                }
+            }
+            if (Akalibool.All(b => b))
+            {
+                Correct();
+            }
+            else if (Akalibool.All(b => !b))
+            {
+                Wrong();
+            }
         }
         
     }
 
 
-    public bool ReceiveObjectAkaliMetal(GameObject receivedObject)
-    {
-        if (receivedObject.GetComponent<Atom>().CheckIfAkali())
-        {
-            return true;
-        }
-        else { 
-            return false; 
-        }
-
-    }
+  
     /*
      * Disse Functioner checker om det g�ldende krav er Correct i Atommerne.
      * den tilg�r det object der valgt "receivedObject" og tilg�r dens script 
@@ -344,7 +349,18 @@ public class AiCustomer : MonoBehaviour
         }
         if (!receivedObject.GetComponent<Atom>().CheckMass(RequestedAtomMass))
         {
-            Wrong(); 
+            Wrong();
+        }
+    }
+    public void ReceiveObjectAtomMass(string RecievedString)
+    {
+        if (RecievedString == RequestedAtomMass.ToString())
+        {
+            Correct();
+        }
+        if (RecievedString != RequestedAtomMass.ToString())
+        {
+            Wrong();
         }
     }
     public void ReceiveObjectGroup(GameObject receivedObject)
@@ -467,7 +483,6 @@ public class AiCustomer : MonoBehaviour
     }
     public void ReceiveObjectOuterShell(GameObject receivedObject)
     {
-        print(receivedObject.GetComponent<Atom>().Shells);
         if (receivedObject.GetComponent<Atom>().CheckOuterShell(RequestedOuterShell, receivedObject.GetComponent<Atom>().Shells))
         {
             Correct();
@@ -479,16 +494,30 @@ public class AiCustomer : MonoBehaviour
         }
     }
 
-    //Dont know if we will use this, but it sets the current aicustomers Hint1Bool and FailBool to choosen : False/true
-    public void SetHint1Bool(bool WhatState)
+    public void ReceiveObjectAkaliMetal(GameObject receivedObject)
     {
-        Hint1Bool = WhatState;
+        if (receivedObject.GetComponent<Atom>().CheckIfAkali())
+        {
+            Correct();
+        }
+        if (!receivedObject.GetComponent<Atom>().CheckIfAkali())
+        {
+            Wrong();
+            print(receivedObject.GetComponent<Atom>().Shells);
+        }
     }
-    public void SetFailBool(bool WhatState)
+    public bool ReceiveObjectAkaliMetalMulti(GameObject receivedObject)
     {
-        FailBool = WhatState;
-    }
+        if (receivedObject.GetComponent<Atom>().CheckIfAkali())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
+    }
     /*
     * 
     * Det her er functionerne der k�rer hvis svaret er 
