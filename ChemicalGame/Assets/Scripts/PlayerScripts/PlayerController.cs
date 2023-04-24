@@ -206,8 +206,11 @@ public class PlayerController : MonoBehaviour
         isPicking = false;
 
         //The picked element is now not picked anymore to make the green outline go away
-        onHover[bPickedElement].isPicked = false;
-        onHover[bPickedElement].outline.enabled = false;
+        for (int i = 0; i < atomElemIndex.Count; i++)
+        {
+            onHover[atomElemIndex[i]].isPicked = false;
+            onHover[atomElemIndex[i]].outline.enabled = false;
+        }
 
         //Duplicating atom element gameobject
         copiedObject = Instantiate(elements[bPickedElement].transform.parent.gameObject, atomHolder.transform);
