@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
     public NavMeshAgent player;
     public Animator playerAnimator;
     public GameObject targetDest, deskDest, guy;
-    private bool isPicking, isOn, goingBack, okPressed;
+    private bool isPicking, isOn, goingBack, okPressed, atomChosen;
     public GameObject[] elements, atomDeskPlaces;
     private OnHover[] onHover = new OnHover[90];
-    private int pickedElement, bPickedElement, atomDeskNum;
+    private int pickedElement, bPickedElement;
     public GameObject atomHolder, originalParent;
     private GameObject copiedObject;
     AiCustomerManager theaimanager;
@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
             onHover[i] = elements[i].GetComponent<OnHover>();   
             
         }
-        atomDeskNum = 0;
         theaimanager = FindObjectOfType<AiCustomerManager>();
 
     }
@@ -66,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 multipleAtomChooseControls();
             }
         }
-        else if (Input.GetKeyDown("space"))
+        else if (Input.GetKeyDown("space") && multipleAtomTask && atomChosen)
         {
             //Setting the destination of the agent to the click position 
             targetDest.transform.position = point.point;
@@ -169,6 +168,7 @@ public class PlayerController : MonoBehaviour
                 //Saving the index of the picked atom elements                
                 bPickedElement = pickedElement;
                 atomElemIndex.Add(pickedElement);
+                atomChosen = true;
             }           
         }
     }
@@ -206,8 +206,11 @@ public class PlayerController : MonoBehaviour
         isPicking = false;
 
         //The picked element is now not picked anymore to make the green outline go away
-        onHover[bPickedElement].isPicked = false;
-        onHover[bPickedElement].outline.enabled = false;
+        for (int i = 0; i < atomElemIndex.Count; i++)
+        {
+            onHover[atomElemIndex[i]].isPicked = false;
+            onHover[atomElemIndex[i]].outline.enabled = false;
+        }
 
         //Duplicating atom element gameobject
         copiedObject = Instantiate(elements[bPickedElement].transform.parent.gameObject, atomHolder.transform);
@@ -234,7 +237,6 @@ public class PlayerController : MonoBehaviour
         }
         copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlaces[4].transform);
         copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        atomDeskNum += 1;
         //Destroys all childs of the AtomHolder
         for (var i = atomHolder.transform.childCount - 1; i >= 0; i--)
         {
@@ -261,8 +263,7 @@ public class PlayerController : MonoBehaviour
             Object.Destroy(atomDeskPlaces[4].transform.GetChild(i).gameObject);
         }
         copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlaces[4].transform);
-        copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        atomDeskNum += 1;
+        copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);        
         //Destroys all childs of the AtomHolder
         for (var i = atomHolder.transform.childCount - 1; i >= 0; i--)
         {
@@ -272,6 +273,7 @@ public class PlayerController : MonoBehaviour
 
         //Setting the agent animation to idle/stand.
         playerAnimator.SetTrigger("stand");
+        atomChosen = false;
 
         //Now we're not going back anymore, we're back at the desk.
 
