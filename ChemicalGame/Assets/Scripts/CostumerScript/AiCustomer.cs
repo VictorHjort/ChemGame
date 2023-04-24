@@ -138,8 +138,7 @@ public class AiCustomer : MonoBehaviour
         points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");
-        uiType.SetActive(false);
-
+        
     }
     // Update is called once per frame
     void Update()
@@ -232,6 +231,7 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.AtomMasse)
         {
             CustommerTask = 5;
+            print("hey");
             uiType.SetActive(true);
 
         }
@@ -534,6 +534,7 @@ public class AiCustomer : MonoBehaviour
         ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
         points.PointsAdded(Results);
         uiType.SetActive(false);
+        print("ohNo");
     }
 
     public void Wrong()
@@ -549,6 +550,7 @@ public class AiCustomer : MonoBehaviour
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
             uiType.SetActive(false);
+            print("ohYos");
         }
         if (Hint2Bool)
         {
