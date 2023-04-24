@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
             //Setting animtaion to run when the agent is going towards an atom element
             playerAnimator.SetTrigger("run");
         }
+
         //Check if path is created 
         if (player.hasPath && !isPicking)
         {
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
             if (multipleAtomTask)
             {
-                alkaliPickControls();
+                multipleAtomPickControls();
             }
         }
 
@@ -165,7 +166,8 @@ public class PlayerController : MonoBehaviour
                 //Setting the chosen atom elements as isPicked true.
                 onHover[pickedElement].isPicked = true;
                 point = hitPoint;
-                //Saving the index of the picked atom elements
+                //Saving the index of the picked atom elements                
+                bPickedElement = pickedElement;
                 atomElemIndex.Add(pickedElement);
             }           
         }
@@ -194,9 +196,29 @@ public class PlayerController : MonoBehaviour
         //The boolean for checking the agent is on the way back is set true
         goingBack = true;
     }
-    public void alkaliPickControls()
+    public void multipleAtomPickControls()
     {
+        //Setting destination back to desk
+        player.SetDestination(deskDest.transform.position);
 
+
+        //Now the agent has picked and isPicking is set to false
+        isPicking = false;
+
+        //The picked element is now not picked anymore to make the green outline go away
+        onHover[bPickedElement].isPicked = false;
+        onHover[bPickedElement].outline.enabled = false;
+
+        //Duplicating atom element gameobject
+        copiedObject = Instantiate(elements[bPickedElement].transform.parent.gameObject, atomHolder.transform);
+        copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+
+        //The player animation is now carrying
+        playerAnimator.SetTrigger("carry");
+
+        //The boolean for checking the agent is on the way back is set true
+        goingBack = true;
     }
  
     public void oneAtomPlaceControls()
@@ -229,7 +251,34 @@ public class PlayerController : MonoBehaviour
     }
     public void alkaliPlaceControls()
     {
+        //Letting all onHover scripts know the player is now back at the desk and not picking anymore.
+        for (int i = 0; i < onHover.Length; i++)
+        {
+            onHover[i].picking = false;
+        }
+        for (var i = atomDeskPlaces[4].transform.childCount - 1; i >= 0; i--)
+        {
+            Object.Destroy(atomDeskPlaces[4].transform.GetChild(i).gameObject);
+        }
+        copiedObject = Instantiate(atomHolder.transform.GetChild(0).gameObject, atomDeskPlaces[4].transform);
+        copiedObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        atomDeskNum += 1;
+        //Destroys all childs of the AtomHolder
+        for (var i = atomHolder.transform.childCount - 1; i >= 0; i--)
+        {
+            Object.Destroy(atomHolder.transform.GetChild(i).gameObject);
+        }
 
+
+        //Setting the agent animation to idle/stand.
+        playerAnimator.SetTrigger("stand");
+
+        //Now we're not going back anymore, we're back at the desk.
+        goingBack = false;
+        for (int i = 0; i < atomElemIndex.Count; i++)
+        {
+            theaimanager.Task(elements[atomElemIndex[i]].transform.parent.gameObject);
+        }
     }
 
 }
