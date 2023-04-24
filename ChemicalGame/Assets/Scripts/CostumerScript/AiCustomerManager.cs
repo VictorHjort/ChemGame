@@ -48,7 +48,10 @@ public class AiCustomerManager : MonoBehaviour
     //Checks the object and compare it.
     public void Task(GameObject receivedObject) { 
         AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
-
+    }
+    public void Task(string RecievedString)
+    {
+        AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(RecievedString);
     }
     public void MultiTask(GameObject[] receivedObject)
     {

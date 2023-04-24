@@ -7,31 +7,37 @@ using UnityEngine.EventSystems;
 public class UITilAtommasse : MonoBehaviour
 {
     public bool isActive;
-    private string firstTyped;
     public string Awnser;
     public TMP_InputField FieldInput;
+    private AiCustomerManager theAIManagaer;
     // Start is called before the first frame update
     private void Awake()
     {
         FieldInput = GetComponent<TMP_InputField>();
         FieldInput.characterValidation = TMP_InputField.CharacterValidation.Decimal;
         FieldInput.onValidateInput += ValidateNumericInput;
+        theAIManagaer = FindObjectOfType<AiCustomerManager>();
     }
     private void Update()
     {
-        if (!isActive && IntEntered())
+        if (!isActive && IntEntered() || !isActive && Input.GetKey(KeyCode.KeypadEnter) || !isActive && Input.GetKey(KeyCode.Return))
         {
             FieldInput.ActivateInputField();
             isActive = true;
            
         }
-        if(isActive && Input.GetKeyDown(KeyCode.Return)||Input.GetKey(KeyCode.Escape))
+        if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {
             Awnser = FieldInput.text.ToString();
-            print(Awnser);
+            theAIManagaer.Task(Awnser);
             FieldInput.text = "";
             isActive = false;
 
+        }
+        if (isActive && Input.GetKey(KeyCode.Escape))
+        { 
+            FieldInput.text = "";
+            isActive = false;
         }
 
     }

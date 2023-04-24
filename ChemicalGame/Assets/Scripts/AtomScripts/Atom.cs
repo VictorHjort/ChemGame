@@ -31,7 +31,10 @@ using UnityEngine;
     // public bool CheckFifth(int ClickedAtomVariable)
     // public bool CheckSixth(int ClickedAtomVariable)
     // public bool CheckSeventh(int ClickedAtomVariable)
-    // 
+    // public bool CheckOuterShell(int ClickedAtomVariable, int OuterShell)
+    // public bool CheckGroup(int ClickedAtomVariable)
+    // public bool CheckPeriod(int ClickedAtomVariable)
+    // public bool CheckIfAkali()
     //                Not Used
     //
     //        void Update()
@@ -117,7 +120,8 @@ using UnityEngine;
     {
         // storing s1var from the object (or actually the ElementalTextScript) 
         // Into int FirstShell
-        if (this.gameObject.GetComponent<ElementalText>().s2Var != "")
+
+        if (this.gameObject.GetComponent<ElementalText>().s1Var != "")
         {
             FirstShell = int.Parse(this.gameObject.GetComponent<ElementalText>().s1Var);
             Shells = 1;
@@ -452,3 +456,4 @@ using UnityEngine;
     }
 
 }
+    
