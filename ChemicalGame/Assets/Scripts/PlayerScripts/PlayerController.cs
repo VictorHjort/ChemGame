@@ -273,11 +273,15 @@ public class PlayerController : MonoBehaviour
         atomChosen = false;
 
         //Now we're not going back anymore, we're back at the desk.
+
         goingBack = false;
+        GameObject[] Elementssending = new GameObject[atomElemIndex.Count];
         for (int i = 0; i < atomElemIndex.Count; i++)
         {
-            theaimanager.Task(elements[atomElemIndex[i]].transform.parent.gameObject);
+            Elementssending[i] =  elements[atomElemIndex[i]].transform.parent.gameObject;
         }
+        theaimanager.MultiTask(Elementssending);
+        
     }
 
 }

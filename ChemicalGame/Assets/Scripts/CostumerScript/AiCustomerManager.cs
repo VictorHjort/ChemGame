@@ -46,10 +46,14 @@ public class AiCustomerManager : MonoBehaviour
     //This is the function to give the current AI custommer the task
     //the task is "is the recieved object the corrrect" the AICustomer then
     //Checks the object and compare it.
-    public void Task(GameObject receivedObject) { AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
+    public void Task(GameObject receivedObject) { 
+        AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
 
     }
-
+    public void MultiTask(GameObject[] receivedObject)
+    {
+        AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecievedMulti(receivedObject);
+    }
     //This Set the current ai active and the other AICustomers objects to not active.
 
     public void NewAi() 
