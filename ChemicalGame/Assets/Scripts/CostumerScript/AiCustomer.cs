@@ -296,25 +296,31 @@ public class AiCustomer : MonoBehaviour
         if (CustommerTask == 3)
         {
             Akalibool = new bool[receivedObject.Length];
-            print("hello");
-            for (int i = 0; i < receivedObject.Length; i++)
-            {
-                if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
-                {
-                    Akalibool[i] = true;
-                }
-                if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
-                {
-                    Akalibool[i] = false;
-                }
-            }
-            if (Akalibool.All(b => b))
-            {
-                Correct();
-            }
-            else if (Akalibool.All(b => !b))
+           if(receivedObject.Length != 6)
             {
                 Wrong();
+            }
+            if (receivedObject.Length == 6)
+            {
+                for (int i = 0; i < receivedObject.Length; i++)
+                {
+                    if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+                    {
+                        Akalibool[i] = true;
+                    }
+                    if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+                    {
+                        Akalibool[i] = false;
+                    }
+                }
+                if (Akalibool.All(b => b))
+                {
+                    Correct();
+                }
+                else if (Akalibool.All(b => !b))
+                {
+                    Wrong();
+                }
             }
         }
         
