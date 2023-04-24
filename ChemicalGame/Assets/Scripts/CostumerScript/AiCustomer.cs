@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class AiCustomer : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class AiCustomer : MonoBehaviour
     //Variables for modifying text
     [Header("The Text Field")]
     public TMP_Text forTextField;
-
+    private bool[] Akalibool ;
     private ScientistController scientistController;
     public GameObject playerC;
     PlayerController playerController;
@@ -279,8 +280,43 @@ public class AiCustomer : MonoBehaviour
         }
     }
 
-    
-    
+    public void CustommerRecievedMulti(GameObject[] receivedObject)
+    {
+        Akalibool = new bool[receivedObject.Length];
+        print("hello");
+        for (int i = 0; i < receivedObject.Length;i++) {
+            if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+            {
+                Akalibool[i] = true;
+            }
+            if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+            {
+                Akalibool[i] = false;
+            }
+        }
+        if (Akalibool.All(b => b))
+        {
+            Correct();
+        }
+        else if (Akalibool.All(b => !b))
+        {
+            Wrong();
+        }
+        
+    }
+
+
+    public bool ReceiveObjectAkaliMetal(GameObject receivedObject)
+    {
+        if (receivedObject.GetComponent<Atom>().CheckIfAkali())
+        {
+            return true;
+        }
+        else { 
+            return false; 
+        }
+
+    }
     /*
      * Disse Functioner checker om det g�ldende krav er Correct i Atommerne.
      * den tilg�r det object der valgt "receivedObject" og tilg�r dens script 

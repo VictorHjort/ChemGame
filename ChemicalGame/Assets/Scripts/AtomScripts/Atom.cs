@@ -4,10 +4,11 @@ using UnityEngine;
 
     public class Atom : MonoBehaviour
 {
-    public string AtomName, AtomSymbol;
-    public float AtomMass;
-    public int AtomNumber, FirstShell, SecondShell, ThirdShell, FourthShell, FifthShell, SixthShell, SeventhShell;
-    public int Group, Period, Shells;
+    [System.NonSerialized] public string AtomName, AtomSymbol;
+    [System.NonSerialized] public float AtomMass;
+    [System.NonSerialized] public int AtomNumber, FirstShell, SecondShell, ThirdShell, FourthShell, FifthShell, SixthShell, SeventhShell;
+    [System.NonSerialized] public int Group, Period, Shells;
+    public bool IsAkali;
 
     //             Code overview
     // 
@@ -437,8 +438,11 @@ using UnityEngine;
     {
         return ClickedAtomVariable == Period;
     }
-    
-    
+
+    public bool CheckIfAkali()
+    {
+        return IsAkali;
+    }
     // Update is called once per frame
     // Is not being used
 
