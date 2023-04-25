@@ -11,7 +11,7 @@ public class UITilAtommasse : MonoBehaviour
     public TMP_InputField FieldInput;
     private AiCustomerManager theAIManagaer;
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         FieldInput = GetComponent<TMP_InputField>();
         FieldInput.characterValidation = TMP_InputField.CharacterValidation.Decimal;
@@ -20,22 +20,20 @@ public class UITilAtommasse : MonoBehaviour
     }
     private void Update()
     {
-        if (!isActive && IntEntered() || !isActive && Input.GetKey(KeyCode.KeypadEnter) || !isActive && Input.GetKey(KeyCode.Return))
+        if (!isActive && IntEntered())
         {
             FieldInput.ActivateInputField();
             isActive = true;
-           
         }
-        if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
+        if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             Awnser = FieldInput.text.ToString();
-            theAIManagaer.Task(Awnser);
+            theAIManagaer.TaskString(Awnser);
             FieldInput.text = "";
             isActive = false;
-
         }
-        if (isActive && Input.GetKey(KeyCode.Escape))
-        { 
+        if (isActive && Input.GetKeyDown(KeyCode.Q))
+        {
             FieldInput.text = "";
             isActive = false;
         }
@@ -80,7 +78,6 @@ public class UITilAtommasse : MonoBehaviour
         }
         else { return false; }
     }
-    
 }
 /* long version of bool IntEntered
        if (Input.GetKeyDown(KeyCode.Alpha0))

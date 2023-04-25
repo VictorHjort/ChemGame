@@ -13,7 +13,7 @@ public class AiCustomer : MonoBehaviour
     public TMP_Text forTextField;
     private bool[] Akalibool ;
     private ScientistController scientistController;
-    public GameObject playerC, scientist;
+    public GameObject playerC, scientist, chooseUi;
     PlayerController playerController;
     private bool typeTask;
     
@@ -34,6 +34,7 @@ public class AiCustomer : MonoBehaviour
     //Text styling, how the format should be.
     public enum TextStyle
     {
+        String,
         StringAtomnameStringGroupString,
         StringAtomnameStringPeriodString,
         StringAtomnameStringAtomnumberString,
@@ -140,6 +141,7 @@ public class AiCustomer : MonoBehaviour
         points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");
+        chooseUi.SetActive(false);
         
     }
     // Update is called once per frame
@@ -186,6 +188,11 @@ public class AiCustomer : MonoBehaviour
             Hint1 = Hint1Part1 + AtomName + Hint1Part2 + AtomGroup + Hint1Part3 + AtomPeriod + Hint1Part4;
             Hint2 = Hint2Part1 + AtomName + Hint2Part2 + AtomGroup + Hint2Part3 + AtomPeriod + Hint2Part4;
         }
+        if(TekstStyle == TextStyle.String)
+        {
+            Hint1 = Hint1Part1;
+            Hint2 = Hint2Part1;
+        }
     }
 
 
@@ -201,7 +208,7 @@ public class AiCustomer : MonoBehaviour
      * 4 = Atom Opbygning,
      * 5 = Atom Masse
      * 6 = Ellektroner I Yderste Skald
-     * 
+     * 7 = akalimetal
      */
     public void CustommerTaskSet()
     {
@@ -224,11 +231,13 @@ public class AiCustomer : MonoBehaviour
         {
             CustommerTask = 3;
             playerController.multipleAtomTask = true;
+             
         }
         else if (Tasks == Dropdown.AtomOpbygning)
         {
             CustommerTask = 4;
-            
+            playerController.oneAtomTask = true;
+
         }
         else if (Tasks == Dropdown.AtomMasse)
         {
@@ -238,9 +247,12 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.EllektronerIYdersteSkald)
         {
             CustommerTask = 6;
+            playerController.oneAtomTask = true;
         }
-        else if (Tasks == Dropdown.AkaliMetal){
+        else if (Tasks == Dropdown.AkaliMetal)
+        {
             CustommerTask = 7;
+            playerController.oneAtomTask = true;
         }
     }
     /*
@@ -275,12 +287,12 @@ public class AiCustomer : MonoBehaviour
         }
         if (CustommerTask == 4)
         {
-            // public void CustommerRecieved(int receivedAtomMass)
-            // is used instead
+            ReceiveObjectGroupeAndPeriod(receivedObject);
         }
         if (CustommerTask == 5)
         {
-            
+            // public void CustommerRecieved(int receivedAtomMass)
+            // is used instead 
         }
         if (CustommerTask == 6)
         {
@@ -291,11 +303,11 @@ public class AiCustomer : MonoBehaviour
             ReceiveObjectAkaliMetal(receivedObject);
         }
     }
-    public void CustommerRecieved(string receivedAtomMass)
+    public void CustommerRecievedString(string receivedAtomMass)
     {
         if (CustommerTask == 5)
         {
-            ReceiveObjectAtomMass(receivedAtomMass);
+            ReceiveObjectAtomMassString(receivedAtomMass);
         }
     }
 
@@ -366,15 +378,17 @@ public class AiCustomer : MonoBehaviour
             Wrong();
         }
     }
-    public void ReceiveObjectAtomMass(string RecievedString)
+    public void ReceiveObjectAtomMassString(string RecievedString)
     {
-        if (RecievedString == RequestedAtomMass.ToString())
+        if (RecievedString == RequestedAtomMass.ToString().Replace(",", "."))
         {
             Correct();
+            print("yes");
         }
-        if (RecievedString != RequestedAtomMass.ToString())
+        if (RecievedString != RequestedAtomMass.ToString().Replace(",", "."))
         {
             Wrong();
+            print("ohh nooo the humans");
         }
     }
     public void ReceiveObjectGroup(GameObject receivedObject)
@@ -559,7 +573,6 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
-            print("ohYos");
         }
         if (Hint2Bool)
         {
@@ -583,6 +596,10 @@ public class AiCustomer : MonoBehaviour
     public void setRequest()
     {
         forTextField.text = Request;
+        if (Tasks == Dropdown.AkaliMetaler)
+        {
+            chooseUi.SetActive(true);
+        }
         if (typeTask)
         {
             scientistController.typeTask = true;

@@ -361,6 +361,11 @@ using UnityEngine;
         return ClickedAtomVariable == AtomMass;
 
     }
+    public bool CheckMass(string ClickedAtomVariable)
+    {
+        return ClickedAtomVariable == AtomMass.ToString();
+
+    }
     public bool CheckAtomNumber(int ClickedAtomVariable)
     {
         return ClickedAtomVariable == AtomNumber;

@@ -65,13 +65,27 @@ public class PlayerController : MonoBehaviour
                 multipleAtomChooseControls();
             }
         }
-        else if (Input.GetKeyDown("space") && multipleAtomTask && atomChosen)
+        else if (Input.GetKeyDown("return") && multipleAtomTask && atomChosen)
         {
             //Setting the destination of the agent to the click position 
             targetDest.transform.position = point.point;
             player.SetDestination(point.point);
             //Setting animtaion to run when the agent is going towards an atom element
             playerAnimator.SetTrigger("run");
+        }
+        else if (Input.GetKeyDown("q") && multipleAtomTask && atomChosen)
+        {
+            atomChosen = false;
+            atomElemIndex.Clear();
+            for (int i = 0; i < onHover.Length; i++)
+            {
+                if (!atomElemIndex.Contains(i))
+                {
+                    //Setting all atom boxes as not picked and outline enabled false
+                    onHover[i].outline.enabled = false;
+                    onHover[i].isPicked = false;
+                }
+            }
         }
 
         //Check if path is created 
@@ -169,7 +183,8 @@ public class PlayerController : MonoBehaviour
                 bPickedElement = pickedElement;
                 atomElemIndex.Add(pickedElement);
                 atomChosen = true;
-            }           
+            }
+            
         }
     }
     public void writingTaskControl()
@@ -253,6 +268,7 @@ public class PlayerController : MonoBehaviour
         //Now we're not going back anymore, we're back at the desk.
         goingBack = false;
         theaimanager.Task(elements[bPickedElement].transform.parent.gameObject);
+        oneAtomTask = false;
     }
     public void alkaliPlaceControls()
     {
@@ -287,7 +303,7 @@ public class PlayerController : MonoBehaviour
             Elementssending[i] =  elements[atomElemIndex[i]].transform.parent.gameObject;
         }
         theaimanager.MultiTask(Elementssending);
-        
+        multipleAtomTask = false;
     }
 
 
