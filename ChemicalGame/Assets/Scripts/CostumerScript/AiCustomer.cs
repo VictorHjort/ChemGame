@@ -13,7 +13,7 @@ public class AiCustomer : MonoBehaviour
     public TMP_Text forTextField;
     private bool[] Akalibool ;
     private ScientistController scientistController;
-    public GameObject playerC, scientist;
+    public GameObject playerC, scientist, chooseUi;
     PlayerController playerController;
     private bool typeTask;
     
@@ -141,6 +141,7 @@ public class AiCustomer : MonoBehaviour
         points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");
+        chooseUi.SetActive(false);
         
     }
     // Update is called once per frame
@@ -230,6 +231,7 @@ public class AiCustomer : MonoBehaviour
         {
             CustommerTask = 3;
             playerController.multipleAtomTask = true;
+             
         }
         else if (Tasks == Dropdown.AtomOpbygning)
         {
@@ -250,6 +252,7 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.AkaliMetal)
         {
             CustommerTask = 7;
+            playerController.oneAtomTask = true;
         }
     }
     /*
@@ -593,6 +596,10 @@ public class AiCustomer : MonoBehaviour
     public void setRequest()
     {
         forTextField.text = Request;
+        if (Tasks == Dropdown.AkaliMetaler)
+        {
+            chooseUi.SetActive(true);
+        }
         if (typeTask)
         {
             scientistController.typeTask = true;
