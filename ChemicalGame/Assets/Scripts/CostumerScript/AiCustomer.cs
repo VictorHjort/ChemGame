@@ -295,7 +295,7 @@ public class AiCustomer : MonoBehaviour
     {
         if (CustommerTask == 5)
         {
-            ReceiveObjectAtomMass(receivedAtomMass);
+            ReceiveObjectAtomMassString(receivedAtomMass);
         }
     }
 
@@ -366,14 +366,18 @@ public class AiCustomer : MonoBehaviour
             Wrong();
         }
     }
-    public void ReceiveObjectAtomMass(string RecievedString)
+    public void ReceiveObjectAtomMassString(string RecievedString)
     {
-        if (RecievedString == RequestedAtomMass.ToString())
+        if (RequestedAtomMass.ToString() == RecievedString.ToString())
         {
             Correct();
+            print("yees");
         }
-        if (RecievedString != RequestedAtomMass.ToString())
+        if (RequestedAtomMass.ToString() == RecievedString.ToString())
         {
+
+            print(RequestedAtomMass.ToString() );
+            print(RecievedString);
             Wrong();
         }
     }
@@ -559,7 +563,6 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
-            print("ohYos");
         }
         if (Hint2Bool)
         {

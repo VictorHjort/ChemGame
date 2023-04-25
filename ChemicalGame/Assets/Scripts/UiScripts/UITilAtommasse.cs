@@ -20,7 +20,7 @@ public class UITilAtommasse : MonoBehaviour
     }
     private void Update()
     {
-        if (!isActive && IntEntered() || !isActive && Input.GetKey(KeyCode.KeypadEnter) || !isActive && Input.GetKey(KeyCode.Return))
+        if (!isActive && IntEntered() || !isActive && Input.GetKeyDown(KeyCode.KeypadEnter) || !isActive && Input.GetKeyDown(KeyCode.Return))
         {
             FieldInput.ActivateInputField();
             isActive = true;
@@ -31,10 +31,10 @@ public class UITilAtommasse : MonoBehaviour
             theAIManagaer.Task(Awnser);
             FieldInput.text = "";
             isActive = false;
-
         }
-        if (isActive && Input.GetKey(KeyCode.Escape))
-        { 
+        if (isActive && Input.GetKey(KeyCode.Q))
+        {
+            print(FieldInput.text);
             FieldInput.text = "";
             isActive = false;
         }
