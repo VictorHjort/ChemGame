@@ -28,7 +28,7 @@ public class UITilAtommasse : MonoBehaviour
         if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {
             Awnser = FieldInput.text.ToString();
-            theAIManagaer.Task(Awnser);
+            theAIManagaer.TaskInt(Awnser);
             FieldInput.text = "";
             isActive = false;
         }

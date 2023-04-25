@@ -368,12 +368,12 @@ public class AiCustomer : MonoBehaviour
     }
     public void ReceiveObjectAtomMassString(string RecievedString)
     {
-        if (RequestedAtomMass.ToString() == RecievedString.ToString())
+        if (RequestedAtomMass.ToString() == RecievedString)
         {
             Correct();
             print("yees");
         }
-        if (RequestedAtomMass.ToString() == RecievedString.ToString())
+        if (RequestedAtomMass.ToString() == RecievedString)
         {
 
             print(RequestedAtomMass.ToString() );
