@@ -9,8 +9,8 @@ public class ScientistController : MonoBehaviour
     public NavMeshAgent scientist;
     public Animator scientistAnimator;
     public GameObject scientistTargetDest, scientistDoneDest;
-    public bool readyToWalk, atDesk, atFinalDestination, correctAnswer, wrongAnswer, atStart, doneWithTask, walking, leftStart;
-    public GameObject doorObject, ui, playerCam;
+    public bool readyToWalk, atDesk, atFinalDestination, correctAnswer, wrongAnswer, atStart, doneWithTask, walking, leftStart, typeTask;
+    public GameObject doorObject, ui, playerCam, uiType;
     private DoorScript doorScript;
     private MouseLook mouseLook;
     AiCustomerManager theAIManagaer;
@@ -29,6 +29,7 @@ public class ScientistController : MonoBehaviour
         theAIManagaer = FindObjectOfType<AiCustomerManager>();
         lightIntensity = lights.GetComponent<LightIntensity>();
         ui.SetActive(false);
+        uiType.SetActive(false);
         if (redLights)
         {
             lightIntensity.lightRed = true;
@@ -59,6 +60,10 @@ public class ScientistController : MonoBehaviour
             doorScript.open = false;
             doorScript.close = true;
             ui.SetActive(true);
+            if (typeTask)
+            {
+                uiType.SetActive(true);
+            }
         }
 
         if (correctAnswer)
@@ -111,6 +116,7 @@ public class ScientistController : MonoBehaviour
     //Couroutines needing a waitForSecond funciton
     private IEnumerator WalkOut()
     {
+        uiType.SetActive(false);
         //The couroutine for making the scientist walk out of the door after the animation.
         yield return new WaitForSeconds(4.5f);
         doorScript.close = false;

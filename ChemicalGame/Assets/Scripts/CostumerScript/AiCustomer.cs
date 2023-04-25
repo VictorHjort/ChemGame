@@ -13,8 +13,9 @@ public class AiCustomer : MonoBehaviour
     public TMP_Text forTextField;
     private bool[] Akalibool ;
     private ScientistController scientistController;
-    public GameObject playerC, uiType;
+    public GameObject playerC, scientist;
     PlayerController playerController;
+    private bool typeTask;
     
     
 
@@ -135,7 +136,7 @@ public class AiCustomer : MonoBehaviour
         playerController = playerC.GetComponent<PlayerController>();
         CustommerTaskSet();
         forTextField.text = this.Request;
-        scientistController = GetComponent<ScientistController>();
+        scientistController = scientist.GetComponent<ScientistController>();
         points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");
@@ -232,9 +233,7 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.AtomMasse)
         {
             CustommerTask = 5;
-            print("hey");
-            uiType.SetActive(true);
-
+            typeTask = true;
         }
         else if (Tasks == Dropdown.EllektronerIYdersteSkald)
         {
@@ -546,7 +545,6 @@ public class AiCustomer : MonoBehaviour
         scientistController.correctAnswer = true;
         ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
         points.PointsAdded(Results);
-        uiType.SetActive(false);
     }
 
     public void Wrong()
@@ -561,7 +559,7 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
-            uiType.SetActive(false);
+            print("ohYos");
         }
         if (Hint2Bool)
         {
@@ -585,5 +583,9 @@ public class AiCustomer : MonoBehaviour
     public void setRequest()
     {
         forTextField.text = Request;
+        if (typeTask)
+        {
+            scientistController.typeTask = true;
+        }
     }
 }
