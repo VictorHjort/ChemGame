@@ -13,7 +13,7 @@ public class AiCustomer : MonoBehaviour
     public TMP_Text forTextField;
     private bool[] Akalibool ;
     private ScientistController scientistController;
-    public GameObject playerC;
+    public GameObject playerC, uiType;
     PlayerController playerController;
     
     
@@ -138,6 +138,7 @@ public class AiCustomer : MonoBehaviour
         points = GameObject.Find("Points").GetComponent<PointSystemScript>();
         Results = 0;
         ResultManager = GameObject.Find("StoringResult");
+        uiType.SetActive(false);
 
     }
     // Update is called once per frame
@@ -231,12 +232,12 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.AtomMasse)
         {
             CustommerTask = 5;
-            
+            uiType.SetActive(true);
+
         }
         else if (Tasks == Dropdown.EllektronerIYdersteSkald)
         {
             CustommerTask = 6;
-            
         }
     }
     /*
@@ -538,7 +539,7 @@ public class AiCustomer : MonoBehaviour
         scientistController.correctAnswer = true;
         ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
         points.PointsAdded(Results);
-
+        uiType.SetActive(false);
     }
 
     public void Wrong()
@@ -553,6 +554,7 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
+            uiType.SetActive(false);
         }
         if (Hint2Bool)
         {

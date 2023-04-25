@@ -172,6 +172,10 @@ public class PlayerController : MonoBehaviour
             }           
         }
     }
+    public void writingTaskControl()
+    {
+
+    }
     public void oneAtomPickControls()
     {
         //Setting destination back to desk
@@ -223,7 +227,6 @@ public class PlayerController : MonoBehaviour
         //The boolean for checking the agent is on the way back is set true
         goingBack = true;
     }
- 
     public void oneAtomPlaceControls()
     {
         //Letting all onHover scripts know the player is now back at the desk and not picking anymore.
@@ -286,5 +289,6 @@ public class PlayerController : MonoBehaviour
         theaimanager.MultiTask(Elementssending);
         
     }
+
 
 }
