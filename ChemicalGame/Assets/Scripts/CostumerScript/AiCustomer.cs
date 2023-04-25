@@ -234,7 +234,8 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.AtomOpbygning)
         {
             CustommerTask = 4;
-            
+            playerController.oneAtomTask = true;
+
         }
         else if (Tasks == Dropdown.AtomMasse)
         {
@@ -244,8 +245,10 @@ public class AiCustomer : MonoBehaviour
         else if (Tasks == Dropdown.EllektronerIYdersteSkald)
         {
             CustommerTask = 6;
+            playerController.oneAtomTask = true;
         }
-        else if (Tasks == Dropdown.AkaliMetal){
+        else if (Tasks == Dropdown.AkaliMetal)
+        {
             CustommerTask = 7;
         }
     }
