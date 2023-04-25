@@ -27,7 +27,8 @@ public class AiCustomer : MonoBehaviour
         AkaliMetaler,
         AtomOpbygning,
         AtomMasse,
-        EllektronerIYdersteSkald
+        EllektronerIYdersteSkald,
+        AkaliMetal
     }
     //Text styling, how the format should be.
     public enum TextStyle
@@ -239,6 +240,9 @@ public class AiCustomer : MonoBehaviour
         {
             CustommerTask = 6;
         }
+        else if (Tasks == Dropdown.AkaliMetal){
+            CustommerTask = 7;
+        }
     }
     /*
      * Her bliver l�sningen valgt udfra hvad man v�lger Group,Period,GroupAndPeriod ETC.
@@ -283,6 +287,10 @@ public class AiCustomer : MonoBehaviour
         {
             ReceiveObjectOuterShell(receivedObject);
         }
+        if(CustommerTask == 7)
+        {
+            ReceiveObjectAkaliMetal(receivedObject);
+        }
     }
     public void CustommerRecieved(string receivedAtomMass)
     {
@@ -297,25 +305,31 @@ public class AiCustomer : MonoBehaviour
         if (CustommerTask == 3)
         {
             Akalibool = new bool[receivedObject.Length];
-            print("hello");
-            for (int i = 0; i < receivedObject.Length; i++)
-            {
-                if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
-                {
-                    Akalibool[i] = true;
-                }
-                if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
-                {
-                    Akalibool[i] = false;
-                }
-            }
-            if (Akalibool.All(b => b))
-            {
-                Correct();
-            }
-            else if (Akalibool.All(b => !b))
+           if(receivedObject.Length != 6)
             {
                 Wrong();
+            }
+            if (receivedObject.Length == 6)
+            {
+                for (int i = 0; i < receivedObject.Length; i++)
+                {
+                    if (receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+                    {
+                        Akalibool[i] = true;
+                    }
+                    if (!receivedObject[i].GetComponent<Atom>().CheckIfAkali())
+                    {
+                        Akalibool[i] = false;
+                    }
+                }
+                if (Akalibool.All(b => b))
+                {
+                    Correct();
+                }
+                else if (Akalibool.All(b => !b))
+                {
+                    Wrong();
+                }
             }
         }
         
@@ -504,7 +518,6 @@ public class AiCustomer : MonoBehaviour
         if (!receivedObject.GetComponent<Atom>().CheckIfAkali())
         {
             Wrong();
-            print(receivedObject.GetComponent<Atom>().Shells);
         }
     }
     public bool ReceiveObjectAkaliMetalMulti(GameObject receivedObject)
