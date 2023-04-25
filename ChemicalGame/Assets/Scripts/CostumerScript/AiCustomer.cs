@@ -34,6 +34,7 @@ public class AiCustomer : MonoBehaviour
     //Text styling, how the format should be.
     public enum TextStyle
     {
+        String,
         StringAtomnameStringGroupString,
         StringAtomnameStringPeriodString,
         StringAtomnameStringAtomnumberString,
@@ -186,6 +187,11 @@ public class AiCustomer : MonoBehaviour
             Hint1 = Hint1Part1 + AtomName + Hint1Part2 + AtomGroup + Hint1Part3 + AtomPeriod + Hint1Part4;
             Hint2 = Hint2Part1 + AtomName + Hint2Part2 + AtomGroup + Hint2Part3 + AtomPeriod + Hint2Part4;
         }
+        if(TekstStyle == TextStyle.String)
+        {
+            Hint1 = Hint1Part1;
+            Hint2 = Hint2Part1;
+        }
     }
 
 
@@ -201,7 +207,7 @@ public class AiCustomer : MonoBehaviour
      * 4 = Atom Opbygning,
      * 5 = Atom Masse
      * 6 = Ellektroner I Yderste Skald
-     * 
+     * 7 = akalimetal
      */
     public void CustommerTaskSet()
     {
@@ -291,7 +297,7 @@ public class AiCustomer : MonoBehaviour
             ReceiveObjectAkaliMetal(receivedObject);
         }
     }
-    public void CustommerRecieved(string receivedAtomMass)
+    public void CustommerRecievedString(string receivedAtomMass)
     {
         if (CustommerTask == 5)
         {
@@ -368,17 +374,15 @@ public class AiCustomer : MonoBehaviour
     }
     public void ReceiveObjectAtomMassString(string RecievedString)
     {
-        if (RequestedAtomMass.ToString() == RecievedString)
+        if (RecievedString == RequestedAtomMass.ToString().Replace(",", "."))
         {
             Correct();
-            print("yees");
+            print("yes");
         }
-        if (RequestedAtomMass.ToString() == RecievedString)
+        if (RecievedString != RequestedAtomMass.ToString().Replace(",", "."))
         {
-
-            print(RequestedAtomMass.ToString() );
-            print(RecievedString);
             Wrong();
+            print("ohh nooo the humans");
         }
     }
     public void ReceiveObjectGroup(GameObject receivedObject)

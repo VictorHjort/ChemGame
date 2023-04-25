@@ -49,9 +49,9 @@ public class AiCustomerManager : MonoBehaviour
     public void Task(GameObject receivedObject) { 
         AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(receivedObject);
     }
-    public void Task(string RecievedString)
+    public void TaskString(string RecievedString)
     {
-        AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecieved(RecievedString);
+        AiCustomerArray[AiCustomerIndex].GetComponent<AiCustomer>().CustommerRecievedString(RecievedString);
     }
     public void MultiTask(GameObject[] receivedObject)
     {
