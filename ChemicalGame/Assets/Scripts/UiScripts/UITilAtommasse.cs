@@ -24,7 +24,6 @@ public class UITilAtommasse : MonoBehaviour
         {
             FieldInput.ActivateInputField();
             isActive = true;
-           
         }
         if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {

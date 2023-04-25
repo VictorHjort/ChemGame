@@ -547,7 +547,6 @@ public class AiCustomer : MonoBehaviour
         ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
         points.PointsAdded(Results);
         uiType.SetActive(false);
-        print("ohNo");
     }
 
     public void Wrong()
@@ -563,7 +562,6 @@ public class AiCustomer : MonoBehaviour
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
             uiType.SetActive(false);
-            print("ohYos");
         }
         if (Hint2Bool)
         {
