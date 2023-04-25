@@ -20,23 +20,26 @@ public class UITilAtommasse : MonoBehaviour
     }
     private void Update()
     {
-        if (!isActive && IntEntered() || !isActive && Input.GetKeyDown(KeyCode.KeypadEnter) || !isActive && Input.GetKeyDown(KeyCode.Return))
+        if (!isActive && IntEntered())
         {
             FieldInput.ActivateInputField();
             isActive = true;
+            print("active");
         }
-        if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
+        if (isActive && Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             Awnser = FieldInput.text.ToString();
-            theAIManagaer.TaskInt(Awnser);
+            theAIManagaer.Task(Awnser);
             FieldInput.text = "";
             isActive = false;
+            print("sending");
         }
         if (isActive && Input.GetKey(KeyCode.Q))
         {
             print(FieldInput.text);
             FieldInput.text = "";
             isActive = false;
+            print("delete");
         }
 
     }
