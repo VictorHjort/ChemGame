@@ -276,12 +276,12 @@ public class AiCustomer : MonoBehaviour
         }
         if (CustommerTask == 4)
         {
-            // public void CustommerRecieved(int receivedAtomMass)
-            // is used instead
+            ReceiveObjectGroupeAndPeriod(receivedObject);
         }
         if (CustommerTask == 5)
         {
-            
+            // public void CustommerRecieved(int receivedAtomMass)
+            // is used instead 
         }
         if (CustommerTask == 6)
         {
