@@ -575,6 +575,7 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
+            playerController.wrong = true;
         }
         if (Hint2Bool)
         {
@@ -583,6 +584,7 @@ public class AiCustomer : MonoBehaviour
             FailBool = true;
             forTextField.text = Hint2;
             scientistController.wrongAnswer = true;
+            playerController.wrong = true;
         }
         if (Hint1Bool)
         {
@@ -591,6 +593,7 @@ public class AiCustomer : MonoBehaviour
             Hint2Bool = true;
             forTextField.text = Hint1;
             scientistController.wrongAnswer = true;
+            playerController.wrong = true;
         }
     }
 
