@@ -268,7 +268,6 @@ public class PlayerController : MonoBehaviour
         //Now we're not going back anymore, we're back at the desk.
         goingBack = false;
         theaimanager.Task(elements[bPickedElement].transform.parent.gameObject);
-        oneAtomTask = false;
     }
     public void alkaliPlaceControls()
     {
@@ -303,7 +302,6 @@ public class PlayerController : MonoBehaviour
             Elementssending[i] =  elements[atomElemIndex[i]].transform.parent.gameObject;
         }
         theaimanager.MultiTask(Elementssending);
-        multipleAtomTask = false;
     }
 
 
