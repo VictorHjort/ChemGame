@@ -64,12 +64,10 @@ public class PlayerController : MonoBehaviour
             if (oneAtomTask)
             {
                 oneAtomChooseControls();
-                print("oneAtomeTask");
             }
 
             if (multipleAtomTask)
-            {
-                print("multipleAtomTask");
+            {    
                 multipleAtomChooseControls();
             }
         }
