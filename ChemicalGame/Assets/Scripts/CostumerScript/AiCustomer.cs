@@ -326,11 +326,11 @@ public class AiCustomer : MonoBehaviour
         if (CustommerTask == 3)
         {
             Akalibool = new bool[receivedObject.Length];
-           if(receivedObject.Length < 6)
+           if(receivedObject.Length != 6)
             {
                 Wrong();
             }
-            if (receivedObject.Length >= 6)
+            if (receivedObject.Length == 6)
             {
                 for (int i = 0; i < receivedObject.Length; i++)
                 {
