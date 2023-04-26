@@ -326,11 +326,11 @@ public class AiCustomer : MonoBehaviour
         if (CustommerTask == 3)
         {
             Akalibool = new bool[receivedObject.Length];
-           if(receivedObject.Length < 6)
+           if(receivedObject.Length != 6)
             {
                 Wrong();
             }
-            if (receivedObject.Length >= 6)
+            if (receivedObject.Length == 6)
             {
                 for (int i = 0; i < receivedObject.Length; i++)
                 {
@@ -585,6 +585,7 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
+            playerController.wrong = true;
         }
         if (Hint2Bool)
         {
@@ -593,6 +594,7 @@ public class AiCustomer : MonoBehaviour
             FailBool = true;
             forTextField.text = Hint2;
             scientistController.wrongAnswer = true;
+            playerController.wrong = true;
         }
         if (Hint1Bool)
         {
@@ -601,6 +603,7 @@ public class AiCustomer : MonoBehaviour
             Hint2Bool = true;
             forTextField.text = Hint1;
             scientistController.wrongAnswer = true;
+            playerController.wrong = true;
         }
     }
 
