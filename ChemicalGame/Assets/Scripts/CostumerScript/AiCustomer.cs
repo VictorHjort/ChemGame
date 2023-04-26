@@ -194,7 +194,15 @@ public class AiCustomer : MonoBehaviour
             Hint2 = Hint2Part1;
         }
     }
+    public void textStyleChoice()
+    {
+        if (TekstStyle == TextStyle.String)
+        {
+            Hint1 = Hint1Part1;
+            Hint2 = Hint2Part1;
+        }
 
+    }
 
 
     /*
@@ -305,14 +313,16 @@ public class AiCustomer : MonoBehaviour
     }
     public void CustommerRecievedString(string receivedAtomMass)
     {
+        textStyleChoice();
         if (CustommerTask == 5)
         {
             ReceiveObjectAtomMassString(receivedAtomMass);
         }
     }
 
-        public void CustommerRecievedMulti(GameObject[] receivedObject)
+    public void CustommerRecievedMulti(GameObject[] receivedObject)
     {
+        textStyleChoice();
         if (CustommerTask == 3)
         {
             Akalibool = new bool[receivedObject.Length];
@@ -337,7 +347,7 @@ public class AiCustomer : MonoBehaviour
                 {
                     Correct();
                 }
-                else if (Akalibool.All(b => !b))
+                if (Akalibool.All(b => !b))
                 {
                     Wrong();
                 }
@@ -575,7 +585,6 @@ public class AiCustomer : MonoBehaviour
             points.PointsAdded(Results);
             playerController.oneAtomTask = false;
             playerController.multipleAtomTask = false;
-            playerController.wrong = true;
         }
         if (Hint2Bool)
         {
@@ -584,7 +593,6 @@ public class AiCustomer : MonoBehaviour
             FailBool = true;
             forTextField.text = Hint2;
             scientistController.wrongAnswer = true;
-            playerController.wrong = true;
         }
         if (Hint1Bool)
         {
@@ -593,7 +601,6 @@ public class AiCustomer : MonoBehaviour
             Hint2Bool = true;
             forTextField.text = Hint1;
             scientistController.wrongAnswer = true;
-            playerController.wrong = true;
         }
     }
 

@@ -17,10 +17,9 @@ public class PlayerController : MonoBehaviour
     public GameObject atomHolder, originalParent;
     private GameObject copiedObject;
     AiCustomerManager theaimanager;
-    public bool oneAtomTask, multipleAtomTask, typingTask, wrong;
+    public bool oneAtomTask, multipleAtomTask, typingTask;
     private List<int> atomElemIndex = new List<int>();
     RaycastHit point;
-    private int hintNum = 0;
 
     private void Start()
     {
@@ -53,21 +52,6 @@ public class PlayerController : MonoBehaviour
                     break;
                 }
             }
-        }
-
-        if (wrong && multipleAtomTask)
-        {
-            atomElemIndex.Clear();
-            if(hintNum == 0)
-            {
-                hintText.text = "Det er desværre ikke rigtigt. Prøv at kigge på farveskemaet på væggen. Husk at det ikke er alle i gruppe 1 som er alkalimetaller. Jeg skal bruge alle alkalimetaller.";
-            }
-            if(hintNum == 1)
-            {
-                hintText.text = "Arh, det er ikke helt rigtigt. Det er alle de røde fra gruppe 1.";
-            }
-            hintNum += 1;
-            wrong = false;
         }
 
         //Check for mouse input and makes sure the player can only press when they aren't walking and is hovering an element
