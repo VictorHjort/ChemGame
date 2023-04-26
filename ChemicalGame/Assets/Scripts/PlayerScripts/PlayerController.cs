@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
+using TMPro;
 public class PlayerController : MonoBehaviour
 {
     //The camera from where the press will be seen
     public Camera cam;
     public NavMeshAgent player;
+    public TMP_Text hintText;
     public Animator playerAnimator;
     public GameObject targetDest, deskDest, guy;
     private bool isPicking, isOn, goingBack, okPressed, atomChosen;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool oneAtomTask, multipleAtomTask, typingTask, wrong;
     private List<int> atomElemIndex = new List<int>();
     RaycastHit point;
+    private int hintNum = 0;
 
     private void Start()
     {
@@ -55,6 +58,15 @@ public class PlayerController : MonoBehaviour
         if (wrong && multipleAtomTask)
         {
             atomElemIndex.Clear();
+            if(hintNum == 0)
+            {
+                hintText.text = "Det er desværre ikke rigtigt. Prøv at kigge på farveskemaet på væggen. Husk at det ikke er alle i gruppe 1 som er alkalimetaller. Jeg skal bruge alle alkalimetaller.";
+            }
+            if(hintNum == 1)
+            {
+                hintText.text = "Arh, det er ikke helt rigtigt. Det er alle de røde fra gruppe 1.";
+            }
+            hintNum += 1;
             wrong = false;
         }
 
