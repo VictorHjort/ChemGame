@@ -559,6 +559,8 @@ public class AiCustomer : MonoBehaviour
         scientistController.correctAnswer = true;
         ResultManager.GetComponent<EndStringPrintout>().AddToResultCode(Results);
         points.PointsAdded(Results);
+        playerController.oneAtomTask = false;
+        playerController.multipleAtomTask = false;
     }
 
     public void Wrong()
