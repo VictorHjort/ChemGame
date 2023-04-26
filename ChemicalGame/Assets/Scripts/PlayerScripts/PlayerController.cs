@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject atomHolder, originalParent;
     private GameObject copiedObject;
     AiCustomerManager theaimanager;
-    public bool oneAtomTask, multipleAtomTask, typingTask;
+    public bool oneAtomTask, multipleAtomTask, typingTask, wrong;
     private List<int> atomElemIndex = new List<int>();
     RaycastHit point;
 
@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
                     break;
                 }
             }
+        }
+
+        if (wrong && multipleAtomTask)
+        {
+            atomElemIndex.Clear();
+            wrong = false;
         }
 
         //Check for mouse input and makes sure the player can only press when they aren't walking and is hovering an element
@@ -183,7 +189,11 @@ public class PlayerController : MonoBehaviour
                 point = hitPoint;
                 //Saving the index of the picked atom elements                
                 bPickedElement = pickedElement;
-                atomElemIndex.Add(pickedElement);
+
+                if (!atomElemIndex.Contains(pickedElement)) 
+                { 
+                    atomElemIndex.Add(pickedElement);
+                }
                 atomChosen = true;
             }
             

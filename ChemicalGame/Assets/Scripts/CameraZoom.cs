@@ -5,6 +5,7 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private float zoomSpeed = 2f;
     [SerializeField] private float zoomFOV = 1f;
     [SerializeField] private float originalFOV = 60f;
+    public UITilAtommasse tingen;
 
     private bool isZooming = false;
     private void Start()
@@ -15,12 +16,14 @@ public class CameraZoom : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
+            tingen.isActive = false;
             isZooming = true;
             GetComponent<Camera>().fieldOfView = zoomFOV;
         }
 
         if (Input.GetMouseButtonUp(1))
         {
+            tingen.isActive = false;
             isZooming = false;
             GetComponent<Camera>().fieldOfView = originalFOV;
         }
