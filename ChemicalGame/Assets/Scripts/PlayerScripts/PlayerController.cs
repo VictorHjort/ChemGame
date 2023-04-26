@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject atomHolder, originalParent;
     private GameObject copiedObject;
     AiCustomerManager theaimanager;
-    public bool oneAtomTask, multipleAtomTask, typingTask;
+    public bool oneAtomTask, multipleAtomTask, typingTask, wrong;
     private List<int> atomElemIndex = new List<int>();
     RaycastHit point;
 
@@ -52,16 +52,24 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (wrong && multipleAtomTask)
+        {
+            atomElemIndex.Clear();
+            wrong = false;
+        }
+
         //Check for mouse input and makes sure the player can only press when they aren't walking and is hovering an element
         if (Input.GetMouseButtonDown(0) && !isPicking && isOn)
         {
             if (oneAtomTask)
             {
                 oneAtomChooseControls();
+                print("oneAtomeTask");
             }
 
             if (multipleAtomTask)
             {
+                print("multipleAtomTask");
                 multipleAtomChooseControls();
             }
         }
@@ -268,7 +276,6 @@ public class PlayerController : MonoBehaviour
         //Now we're not going back anymore, we're back at the desk.
         goingBack = false;
         theaimanager.Task(elements[bPickedElement].transform.parent.gameObject);
-        oneAtomTask = false;
     }
     public void alkaliPlaceControls()
     {
@@ -303,7 +310,6 @@ public class PlayerController : MonoBehaviour
             Elementssending[i] =  elements[atomElemIndex[i]].transform.parent.gameObject;
         }
         theaimanager.MultiTask(Elementssending);
-        multipleAtomTask = false;
     }
 
 
